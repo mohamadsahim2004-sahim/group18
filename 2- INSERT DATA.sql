@@ -32,4 +32,4 @@ INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Designation, Dept_ID) VALUE
 (3,  'Dr. Dinithi Vithanage',     'dinithi@ictec.ruh.ac.lk',      'Senior Lecturer',  1),
 (4,  'Ms. Rumeshika W.arachi',    'rumeshika@ictec.ruh.ac.lk',    'Lecturer',         1),
 (5,  'Ms. Chanduni Fernando',     'chanduni.f@ruh.ac.lk',         'Lecturer',         1),
-(6,  'Mr.Shashitha Lakal',        'shashithal@ictec.ruh.ac.lk',   'Lecturer'          1);
+(6,  'Mr.Shashitha Lakal',        'shashithal@ictec.ruh.ac.lk',   'Lecturer',         1);
