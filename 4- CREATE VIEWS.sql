@@ -96,7 +96,7 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 WHERE a.session = 'Practical';
 
--- view Attendance by Theory Na Practical
+-- view Attendance by Theory and Practical
 
 CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
 SELECT 
