@@ -32,7 +32,7 @@ INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Designation, Dept_ID) VALUE
 (3,  'Dr. Dinithi Vithanage',     'dinithi@ictec.ruh.ac.lk',      'Senior Lecturer',  2),
 (4,  'Ms. Rumeshika W.arachi',    'rumeshika@ictec.ruh.ac.lk',    'Lecturer',         3),
 (5,  'Ms. Chanduni Fernando',     'chanduni.f@ruh.ac.lk',         'Lecturer',         3),
-(6,  'Mr. Shashitha Lakal',        'shashithal@ictec.ruh.ac.lk',   'Lecturer',         2);
+(6,  'Mr. Shashitha Lakal',       'shashithal@ictec.ruh.ac.lk',   'Lecturer',         2);
 
 INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID) VALUES
 (1, 'to1@ruh.ac.lk', 'Nimal Perera',         'Lab A', 1),
@@ -67,10 +67,18 @@ INSERT INTO Course_Unit
 (Course_ID, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID)
 VALUES
 (1, 'ICT1222', 2, 'Practical', 2, 1, 1, 1),
-(2, 'ICT1232', 2, 'Theory', 2, 1, 1, 2),
-(3, 'ICT1242', 2, 'Practical', 2, 1, 1, 5),
-(4, 'ICT1252', 2, 'Theory', 2, 1, 3, 4),
-(5, 'ICT1261', 1, 'Practical', 2, 1, 2, 3);
+(2, 'ICT1212', 2, 'Theory', 2, 1, 1, 2),
+(3, 'ICT1232', 2, 'Theory', 2, 1, 1, 5),
+(4, 'ICT1242', 2, 'Practical', 2, 1, 3, 5),
+(5, 'ICT1252', 2, 'Theory', 2, 1, 1, 2),
+(6, 'ICT1261', 2, 'Practical', 2, 1, 1, 1),
+(7, 'TMS1233', 2, 'Theory', 2, 1, 3, 4),
+(8, 'ENG1212', 2, 'Theory', 2, 1, 1, 6),
+(9, 'TCS1212', 2, 'Theory', 2, 1, 2, 6);
+
+
+
+
 
 
 INSERT INTO Enrollment 
@@ -173,7 +181,87 @@ VALUES
 (77, 16, 2, 2024, 2, 'Active', '2024-03-01'),
 (78, 16, 3, 2024, 2, 'Active', '2024-03-01'),
 (79, 16, 4, 2024, 2, 'Active', '2024-03-01'),
-(80, 16, 5, 2024, 2, 'Active', '2024-03-01');
+(80, 16, 5, 2024, 2, 'Active', '2024-03-01'),
+--student 1(course 6-9)
+(81,  1, 6, 2024, 2, 'Active', '2024-03-01'),
+(82,  1, 7, 2024, 2, 'Active', '2024-03-01'),
+(83,  1, 8, 2024, 2, 'Active', '2024-03-01'),
+(84,  1, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 2 (Courses 6-9)
+(85,  2, 6, 2024, 2, 'Active', '2024-03-01'),
+(86,  2, 7, 2024, 2, 'Active', '2024-03-01'),
+(87,  2, 8, 2024, 2, 'Active', '2024-03-01'),
+(88,  2, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 3 (Courses 6-9)
+(89,  3, 6, 2024, 2, 'Active', '2024-03-01'),
+(90,  3, 7, 2024, 2, 'Active', '2024-03-01'),
+(91,  3, 8, 2024, 2, 'Active', '2024-03-01'),
+(92,  3, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 4 (Courses 6-9)
+(93,  4, 6, 2024, 2, 'Active', '2024-03-01'),
+(94,  4, 7, 2024, 2, 'Active', '2024-03-01'),
+(95,  4, 8, 2024, 2, 'Active', '2024-03-01'),
+(96,  4, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 5 (Courses 6-9)
+(97,  5, 6, 2024, 2, 'Active', '2024-03-01'),
+(98,  5, 7, 2024, 2, 'Active', '2024-03-01'),
+(99,  5, 8, 2024, 2, 'Active', '2024-03-01'),
+(100, 5, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 6 (Courses 6-9)
+(101, 6, 6, 2024, 2, 'Active', '2024-03-01'),
+(102, 6, 7, 2024, 2, 'Active', '2024-03-01'),
+(103, 6, 8, 2024, 2, 'Active', '2024-03-01'),
+(104, 6, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 7 (Courses 6-9)
+(105, 7, 6, 2024, 2, 'Active', '2024-03-01'),
+(106, 7, 7, 2024, 2, 'Active', '2024-03-01'),
+(107, 7, 8, 2024, 2, 'Active', '2024-03-01'),
+(108, 7, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 8 (Courses 6-9)
+(109, 8, 6, 2024, 2, 'Active', '2024-03-01'),
+(110, 8, 7, 2024, 2, 'Active', '2024-03-01'),
+(111, 8, 8, 2024, 2, 'Active', '2024-03-01'),
+(112, 8, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 9 (Courses 6-9)
+(113, 9, 6, 2024, 2, 'Active', '2024-03-01'),
+(114, 9, 7, 2024, 2, 'Active', '2024-03-01'),
+(115, 9, 8, 2024, 2, 'Active', '2024-03-01'),
+(116, 9, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 10 (Courses 6-9)
+(117, 10, 6, 2024, 2, 'Active', '2024-03-01'),
+(118, 10, 7, 2024, 2, 'Active', '2024-03-01'),
+(119, 10, 8, 2024, 2, 'Active', '2024-03-01'),
+(120, 10, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 11 Repeat (Courses 6-9)
+(121, 11, 6, 2024, 2, 'Active', '2024-03-01'),
+(122, 11, 7, 2024, 2, 'Active', '2024-03-01'),
+(123, 11, 8, 2024, 2, 'Active', '2024-03-01'),
+(124, 11, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 12 Repeat (Courses 6-9)
+(125, 12, 6, 2024, 2, 'Active', '2024-03-01'),
+(126, 12, 7, 2024, 2, 'Active', '2024-03-01'),
+(127, 12, 8, 2024, 2, 'Active', '2024-03-01'),
+(128, 12, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 13 Repeat (Courses 6-9)
+(129, 13, 6, 2024, 2, 'Active', '2024-03-01'),
+(130, 13, 7, 2024, 2, 'Active', '2024-03-01'),
+(131, 13, 8, 2024, 2, 'Active', '2024-03-01'),
+(132, 13, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 14 Repeat (Courses 6-9)
+(133, 14, 6, 2024, 2, 'Active', '2024-03-01'),
+(134, 14, 7, 2024, 2, 'Active', '2024-03-01'),
+(135, 14, 8, 2024, 2, 'Active', '2024-03-01'),
+(136, 14, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 15 Repeat (Courses 6-9)
+(137, 15, 6, 2024, 2, 'Active', '2024-03-01'),
+(138, 15, 7, 2024, 2, 'Active', '2024-03-01'),
+(139, 15, 8, 2024, 2, 'Active', '2024-03-01'),
+(140, 15, 9, 2024, 2, 'Active', '2024-03-01'),
+-- Student 16 Suspended (Courses 6-9)
+(141, 16, 6, 2024, 2, 'Active', '2024-03-01'),
+(142, 16, 7, 2024, 2, 'Active', '2024-03-01'),
+(143, 16, 8, 2024, 2, 'Active', '2024-03-01'),
+(144, 16, 9, 2024, 2, 'Active', '2024-03-01');
 
 
 INSERT INTO Marks 
@@ -463,18 +551,16 @@ VALUES
 (228, '2024-07-10', 47, 'Normal', 11, 2, 5),
 (229, '2024-04-10', 45, 'Normal', 11, 3, 1),
 (230, '2024-04-15', 46, 'Normal', 11, 3, 2),
-(231, '2024-05-20', 44, 'Normal', 11, 3, 3),
-(232, '2024-05-25', 47, 'Normal', 11, 3, 4),
-(233, '2024-07-10', 48, 'Normal', 11, 3, 5),
-(234, '2024-07-15', 46, 'Normal', 11, 3, 6),
-(235, '2024-04-10', 44, 'Normal', 11, 4, 1),
-(236, '2024-04-15', 46, 'Normal', 11, 4, 2),
-(237, '2024-05-20', 45, 'Normal', 11, 4, 3),
-(238, '2024-07-10', 47, 'Normal', 11, 4, 5),
-(239, '2024-04-10', 45, 'Normal', 11, 5, 1),
-(240, '2024-04-15', 47, 'Normal', 11, 5, 2),
-(241, '2024-05-20', 46, 'Normal', 11, 5, 4),
-(242, '2024-07-10', 48, 'Normal', 11, 5, 6),
+(231, '2024-05-25', 47, 'Normal', 11, 3, 4),
+(232, '2024-07-15', 46, 'Normal', 11, 3, 6),
+(233, '2024-04-10', 44, 'Normal', 11, 4, 1),
+(234, '2024-04-15', 46, 'Normal', 11, 4, 2),
+(235, '2024-05-20', 45, 'Normal', 11, 4, 3),
+(236, '2024-07-10', 47, 'Normal', 11, 4, 5),
+(237, '2024-04-10', 45, 'Normal', 11, 5, 1),
+(238, '2024-04-15', 47, 'Normal', 11, 5, 2),
+(239, '2024-05-20', 46, 'Normal', 11, 5, 4),
+(240, '2024-07-10', 48, 'Normal', 11, 5, 6),
 
 -- Student 12 (Repeat)
 (243, '2024-04-10', 46, 'Normal', 12, 1, 1),
@@ -487,9 +573,7 @@ VALUES
 (250, '2024-07-10', 48, 'Normal', 12, 2, 5),
 (251, '2024-04-10', 46, 'Normal', 12, 3, 1),
 (252, '2024-04-15', 45, 'Normal', 12, 3, 2),
-(253, '2024-05-20', 47, 'Normal', 12, 3, 3),
 (254, '2024-05-25', 48, 'Normal', 12, 3, 4),
-(255, '2024-07-10', 45, 'Normal', 12, 3, 5),
 (256, '2024-07-15', 47, 'Normal', 12, 3, 6),
 (257, '2024-04-10', 45, 'Normal', 12, 4, 1),
 (258, '2024-04-15', 47, 'Normal', 12, 4, 2),
@@ -511,9 +595,8 @@ VALUES
 (272, '2024-07-10', 47, 'Normal', 13, 2, 5),
 (273, '2024-04-10', 47, 'Normal', 13, 3, 1),
 (274, '2024-04-15', 46, 'Normal', 13, 3, 2),
-(275, '2024-05-20', 48, 'Normal', 13, 3, 3),
 (276, '2024-05-25', 45, 'Normal', 13, 3, 4),
-(277, '2024-07-10', 47, 'Normal', 13, 3, 5),
+
 (278, '2024-07-15', 46, 'Normal', 13, 3, 6),
 (279, '2024-04-10', 46, 'Normal', 13, 4, 1),
 (280, '2024-04-15', 48, 'Normal', 13, 4, 2),
@@ -535,9 +618,7 @@ VALUES
 (294, '2024-07-10', 48, 'Normal', 14, 2, 5),
 (295, '2024-04-10', 45, 'Normal', 14, 3, 1),
 (296, '2024-04-15', 47, 'Normal', 14, 3, 2),
-(297, '2024-05-20', 46, 'Normal', 14, 3, 3),
 (298, '2024-05-25', 48, 'Normal', 14, 3, 4),
-(299, '2024-07-10', 45, 'Normal', 14, 3, 5),
 (300, '2024-07-15', 47, 'Normal', 14, 3, 6),
 (301, '2024-04-10', 46, 'Normal', 14, 4, 1),
 (302, '2024-04-15', 45, 'Normal', 14, 4, 2),
@@ -559,9 +640,7 @@ VALUES
 (316, '2024-07-10', 48, 'Normal', 15, 2, 5),
 (317, '2024-04-10', 46, 'Normal', 15, 3, 1),
 (318, '2024-04-15', 45, 'Normal', 15, 3, 2),
-(319, '2024-05-20', 47, 'Normal', 15, 3, 3),
 (320, '2024-05-25', 48, 'Normal', 15, 3, 4),
-(321, '2024-07-10', 46, 'Normal', 15, 3, 5),
 (322, '2024-07-15', 45, 'Normal', 15, 3, 6),
 (323, '2024-04-10', 47, 'Normal', 15, 4, 1),
 (324, '2024-04-15', 45, 'Normal', 15, 4, 2),
@@ -583,9 +662,7 @@ VALUES
 (338, '2024-07-10', 80, 'Normal', 16, 2, 5),
 (339, '2024-04-10', 78, 'Normal', 16, 3, 1),
 (340, '2024-04-15', 80, 'Normal', 16, 3, 2),
-(341, '2024-05-20', 75, 'Normal', 16, 3, 3),
 (342, '2024-05-25', 78, 'Normal', 16, 3, 4),
-(343, '2024-07-10', 82, 'Normal', 16, 3, 5),
 (344, '2024-07-15', 84, 'Normal', 16, 3, 6),
 (345, '2024-04-10', 72, 'Normal', 16, 4, 1),
 (346, '2024-04-15', 75, 'Normal', 16, 4, 2),
@@ -596,302 +673,80 @@ VALUES
 (351, '2024-05-20', 78, 'Normal', 16, 5, 4),
 (352, '2024-07-10', 85, 'Normal', 16, 5, 6);
 
-INSERT INTO Attendance 
-(Atten_ID, session, Status, Date, Result, Student_ID, Course_ID, To_id)
-VALUES
+INSERT INTO Attendance (Atten_ID, session, Status, Date, Result, Student_ID, Course_ID, To_id) VALUES 
 
--- CATEGORY 1: >=80% attendance (NO medical)
--- Student 1 - Course 1 - 13/15 Present = 86% - ELIGIBLE
-(1,  'Practical', 'Present', '2024-03-04', 'Eligible', 1, 1, 1),
-(2,  'Practical', 'Present', '2024-03-11', 'Eligible', 1, 1, 1),
-(3,  'Practical', 'Present', '2024-03-18', 'Eligible', 1, 1, 1),
-(4,  'Practical', 'Present', '2024-03-25', 'Eligible', 1, 1, 1),
-(5,  'Practical', 'Present', '2024-04-01', 'Eligible', 1, 1, 1),
-(6,  'Practical', 'Present', '2024-04-08', 'Eligible', 1, 1, 1),
-(7,  'Practical', 'Present', '2024-04-15', 'Eligible', 1, 1, 1),
-(8,  'Practical', 'Present', '2024-04-22', 'Eligible', 1, 1, 1),
-(9,  'Practical', 'Present', '2024-04-29', 'Eligible', 1, 1, 1),
-(10, 'Practical', 'Present', '2024-05-06', 'Eligible', 1, 1, 1),
-(11, 'Practical', 'Present', '2024-05-13', 'Eligible', 1, 1, 1),
-(12, 'Practical', 'Present', '2024-05-20', 'Eligible', 1, 1, 1),
-(13, 'Practical', 'Present', '2024-05-27', 'Eligible', 1, 1, 1),
-(14, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 1, 1, 1),
-(15, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 1, 1, 1),
+-- Students 1, 2, 3, 4 (100% Present)
+(1, 'Week 01', 'Present', '2024-04-01', 'Attended', 1, 1, 1), (2, 'Week 02', 'Present', '2024-04-08', 'Attended', 1, 1, 1), (3, 'Week 03', 'Present', '2024-04-15', 'Attended', 1, 1, 1), (4, 'Week 04', 'Present', '2024-04-22', 'Attended', 1, 1, 1), (5, 'Week 05', 'Present', '2024-04-29', 'Attended', 1, 1, 1), (6, 'Week 06', 'Present', '2024-05-06', 'Attended', 1, 1, 1), (7, 'Week 07', 'Present', '2024-05-13', 'Attended', 1, 1, 1), (8, 'Week 08', 'Present', '2024-05-20', 'Attended', 1, 1, 1), (9, 'Week 09', 'Present', '2024-05-27', 'Attended', 1, 1, 1), (10, 'Week 10', 'Present', '2024-06-03', 'Attended', 1, 1, 1), (11, 'Week 11', 'Present', '2024-06-10', 'Attended', 1, 1, 1), (12, 'Week 12', 'Present', '2024-06-17', 'Attended', 1, 1, 1), (13, 'Week 13', 'Present', '2024-06-24', 'Attended', 1, 1, 1), (14, 'Week 14', 'Present', '2024-07-01', 'Attended', 1, 1, 1), (15, 'Week 15', 'Present', '2024-07-08', 'Attended', 1, 1, 1),
+(16, 'Week 01', 'Present', '2024-04-01', 'Attended', 2, 1, 1), (17, 'Week 02', 'Present', '2024-04-08', 'Attended', 2, 1, 1), (18, 'Week 03', 'Present', '2024-04-15', 'Attended', 2, 1, 1), (19, 'Week 04', 'Present', '2024-04-22', 'Attended', 2, 1, 1), (20, 'Week 05', 'Present', '2024-04-29', 'Attended', 2, 1, 1), (21, 'Week 06', 'Present', '2024-05-06', 'Attended', 2, 1, 1), (22, 'Week 07', 'Present', '2024-05-13', 'Attended', 2, 1, 1), (23, 'Week 08', 'Present', '2024-05-20', 'Attended', 2, 1, 1), (24, 'Week 09', 'Present', '2024-05-27', 'Attended', 2, 1, 1), (25, 'Week 10', 'Present', '2024-06-03', 'Attended', 2, 1, 1), (26, 'Week 11', 'Present', '2024-06-10', 'Attended', 2, 1, 1), (27, 'Week 12', 'Present', '2024-06-17', 'Attended', 2, 1, 1), (28, 'Week 13', 'Present', '2024-06-24', 'Attended', 2, 1, 1), (29, 'Week 14', 'Present', '2024-07-01', 'Attended', 2, 1, 1), (30, 'Week 15', 'Present', '2024-07-08', 'Attended', 2, 1, 1),
+(31, 'Week 01', 'Present', '2024-04-01', 'Attended', 3, 1, 1), (32, 'Week 02', 'Present', '2024-04-08', 'Attended', 3, 1, 1), (33, 'Week 03', 'Present', '2024-04-15', 'Attended', 3, 1, 1), (34, 'Week 04', 'Present', '2024-04-22', 'Attended', 3, 1, 1), (35, 'Week 05', 'Present', '2024-04-29', 'Attended', 3, 1, 1), (36, 'Week 06', 'Present', '2024-05-06', 'Attended', 3, 1, 1), (37, 'Week 07', 'Present', '2024-05-13', 'Attended', 3, 1, 1), (38, 'Week 08', 'Present', '2024-05-20', 'Attended', 3, 1, 1), (39, 'Week 09', 'Present', '2024-05-27', 'Attended', 3, 1, 1), (40, 'Week 10', 'Present', '2024-06-03', 'Attended', 3, 1, 1), (41, 'Week 11', 'Present', '2024-06-10', 'Attended', 3, 1, 1), (42, 'Week 12', 'Present', '2024-06-17', 'Attended', 3, 1, 1), (43, 'Week 13', 'Present', '2024-06-24', 'Attended', 3, 1, 1), (44, 'Week 14', 'Present', '2024-07-01', 'Attended', 3, 1, 1), (45, 'Week 15', 'Present', '2024-07-08', 'Attended', 3, 1, 1),
+(46, 'Week 01', 'Present', '2024-04-01', 'Attended', 4, 1, 1), (47, 'Week 02', 'Present', '2024-04-08', 'Attended', 4, 1, 1), (48, 'Week 03', 'Present', '2024-04-15', 'Attended', 4, 1, 1), (49, 'Week 04', 'Present', '2024-04-22', 'Attended', 4, 1, 1), (50, 'Week 05', 'Present', '2024-04-29', 'Attended', 4, 1, 1), (51, 'Week 06', 'Present', '2024-05-06', 'Attended', 4, 1, 1), (52, 'Week 07', 'Present', '2024-05-13', 'Attended', 4, 1, 1), (53, 'Week 08', 'Present', '2024-05-20', 'Attended', 4, 1, 1), (54, 'Week 09', 'Present', '2024-05-27', 'Attended', 4, 1, 1), (55, 'Week 10', 'Present', '2024-06-03', 'Attended', 4, 1, 1), (56, 'Week 11', 'Present', '2024-06-10', 'Attended', 4, 1, 1), (57, 'Week 12', 'Present', '2024-06-17', 'Attended', 4, 1, 1), (58, 'Week 13', 'Present', '2024-06-24', 'Attended', 4, 1, 1), (59, 'Week 14', 'Present', '2024-07-01', 'Attended', 4, 1, 1), (60, 'Week 15', 'Present', '2024-07-08', 'Attended', 4, 1, 1),
 
--- Student 3 - Course 2 - 13/15 Present = 86% - ELIGIBLE
-(16, 'Theory', 'Present', '2024-03-04', 'Eligible', 3, 2, 2),
-(17, 'Theory', 'Present', '2024-03-11', 'Eligible', 3, 2, 2),
-(18, 'Theory', 'Present', '2024-03-18', 'Eligible', 3, 2, 2),
-(19, 'Theory', 'Present', '2024-03-25', 'Eligible', 3, 2, 2),
-(20, 'Theory', 'Present', '2024-04-01', 'Eligible', 3, 2, 2),
-(21, 'Theory', 'Present', '2024-04-08', 'Eligible', 3, 2, 2),
-(22, 'Theory', 'Present', '2024-04-15', 'Eligible', 3, 2, 2),
-(23, 'Theory', 'Present', '2024-04-22', 'Eligible', 3, 2, 2),
-(24, 'Theory', 'Present', '2024-04-29', 'Eligible', 3, 2, 2),
-(25, 'Theory', 'Present', '2024-05-06', 'Eligible', 3, 2, 2),
-(26, 'Theory', 'Present', '2024-05-13', 'Eligible', 3, 2, 2),
-(27, 'Theory', 'Present', '2024-05-20', 'Eligible', 3, 2, 2),
-(28, 'Theory', 'Present', '2024-05-27', 'Eligible', 3, 2, 2),
-(29, 'Theory', 'Absent',  '2024-06-03', 'Eligible', 3, 2, 2),
-(30, 'Theory', 'Absent',  '2024-06-10', 'Eligible', 3, 2, 2),
+-- Student 5 (Fail - Only 6 sessions / 40%)
+(61, 'Week 01', 'Present', '2024-04-01', 'Attended', 5, 1, 1), (62, 'Week 02', 'Absent', '2024-04-08', 'Not Attended', 5, 1, 1), (63, 'Week 03', 'Absent', '2024-04-15', 'Not Attended', 5, 1, 1), (64, 'Week 04', 'Present', '2024-04-22', 'Attended', 5, 1, 1), (65, 'Week 05', 'Absent', '2024-04-29', 'Not Attended', 5, 1, 1), (66, 'Week 06', 'Absent', '2024-05-06', 'Not Attended', 5, 1, 1), (67, 'Week 07', 'Present', '2024-05-13', 'Attended', 5, 1, 1), (68, 'Week 08', 'Absent', '2024-05-20', 'Not Attended', 5, 1, 1), (69, 'Week 09', 'Absent', '2024-05-27', 'Not Attended', 5, 1, 1), (70, 'Week 10', 'Present', '2024-06-03', 'Attended', 5, 1, 1), (71, 'Week 11', 'Absent', '2024-06-10', 'Not Attended', 5, 1, 1), (72, 'Week 12', 'Absent', '2024-06-17', 'Not Attended', 5, 1, 1), (73, 'Week 13', 'Present', '2024-06-24', 'Attended', 5, 1, 1), (74, 'Week 14', 'Absent', '2024-07-01', 'Not Attended', 5, 1, 1), (75, 'Week 15', 'Present', '2024-07-08', 'Attended', 5, 1, 1),
 
--- CATEGORY 2: <80% attendance (NO medical)
--- Student 5 - Course 1 - 9/15 Present = 60% - NOT ELIGIBLE
-(31, 'Practical', 'Present', '2024-03-04', 'Not Eligible', 5, 1, 1),
-(32, 'Practical', 'Present', '2024-03-11', 'Not Eligible', 5, 1, 1),
-(33, 'Practical', 'Present', '2024-03-18', 'Not Eligible', 5, 1, 1),
-(34, 'Practical', 'Absent',  '2024-03-25', 'Not Eligible', 5, 1, 1),
-(35, 'Practical', 'Absent',  '2024-04-01', 'Not Eligible', 5, 1, 1),
-(36, 'Practical', 'Present', '2024-04-08', 'Not Eligible', 5, 1, 1),
-(37, 'Practical', 'Absent',  '2024-04-15', 'Not Eligible', 5, 1, 1),
-(38, 'Practical', 'Present', '2024-04-22', 'Not Eligible', 5, 1, 1),
-(39, 'Practical', 'Absent',  '2024-04-29', 'Not Eligible', 5, 1, 1),
-(40, 'Practical', 'Present', '2024-05-06', 'Not Eligible', 5, 1, 1),
-(41, 'Practical', 'Absent',  '2024-05-13', 'Not Eligible', 5, 1, 1),
-(42, 'Practical', 'Present', '2024-05-20', 'Not Eligible', 5, 1, 1),
-(43, 'Practical', 'Absent',  '2024-05-27', 'Not Eligible', 5, 1, 1),
-(44, 'Practical', 'Present', '2024-06-03', 'Not Eligible', 5, 1, 1),
-(45, 'Practical', 'Absent',  '2024-06-10', 'Not Eligible', 5, 1, 1),
+-- Student 6 (100% Present)
+(76, 'Week 01', 'Present', '2024-04-01', 'Attended', 6, 1, 1), (77, 'Week 02', 'Present', '2024-04-08', 'Attended', 6, 1, 1), (78, 'Week 03', 'Present', '2024-04-15', 'Attended', 6, 1, 1), (79, 'Week 04', 'Present', '2024-04-22', 'Attended', 6, 1, 1), (80, 'Week 05', 'Present', '2024-04-29', 'Attended', 6, 1, 1), (81, 'Week 06', 'Present', '2024-05-06', 'Attended', 6, 1, 1), (82, 'Week 07', 'Present', '2024-05-13', 'Attended', 6, 1, 1), (83, 'Week 08', 'Present', '2024-05-20', 'Attended', 6, 1, 1), (84, 'Week 09', 'Present', '2024-05-27', 'Attended', 6, 1, 1), (85, 'Week 10', 'Present', '2024-06-03', 'Attended', 6, 1, 1), (86, 'Week 11', 'Present', '2024-06-10', 'Attended', 6, 1, 1), (87, 'Week 12', 'Present', '2024-06-17', 'Attended', 6, 1, 1), (88, 'Week 13', 'Present', '2024-06-24', 'Attended', 6, 1, 1), (89, 'Week 14', 'Present', '2024-07-01', 'Attended', 6, 1, 1), (90, 'Week 15', 'Present', '2024-07-08', 'Attended', 6, 1, 1),
 
--- Student 4 - Course 2 - 8/15 Present = 53% - NOT ELIGIBLE
-(46, 'Theory', 'Present', '2024-03-04', 'Not Eligible', 4, 2, 2),
-(47, 'Theory', 'Absent',  '2024-03-11', 'Not Eligible', 4, 2, 2),
-(48, 'Theory', 'Present', '2024-03-18', 'Not Eligible', 4, 2, 2),
-(49, 'Theory', 'Absent',  '2024-03-25', 'Not Eligible', 4, 2, 2),
-(50, 'Theory', 'Absent',  '2024-04-01', 'Not Eligible', 4, 2, 2),
-(51, 'Theory', 'Present', '2024-04-08', 'Not Eligible', 4, 2, 2),
-(52, 'Theory', 'Absent',  '2024-04-15', 'Not Eligible', 4, 2, 2),
-(53, 'Theory', 'Present', '2024-04-22', 'Not Eligible', 4, 2, 2),
-(54, 'Theory', 'Absent',  '2024-04-29', 'Not Eligible', 4, 2, 2),
-(55, 'Theory', 'Present', '2024-05-06', 'Not Eligible', 4, 2, 2),
-(56, 'Theory', 'Absent',  '2024-05-13', 'Not Eligible', 4, 2, 2),
-(57, 'Theory', 'Present', '2024-05-20', 'Not Eligible', 4, 2, 2),
-(58, 'Theory', 'Absent',  '2024-05-27', 'Not Eligible', 4, 2, 2),
-(59, 'Theory', 'Present', '2024-06-03', 'Not Eligible', 4, 2, 2),
-(60, 'Theory', 'Absent',  '2024-06-10', 'Not Eligible', 4, 2, 2),
+-- Student 7 (Pass - Medical Case)
+(91, 'Week 01', 'Present', '2024-04-01', 'Attended', 7, 1, 1), (92, 'Week 02', 'Present', '2024-04-08', 'Attended', 7, 1, 1), (93, 'Week 03', 'Medical', '2024-04-15', 'Excused', 7, 1, 1), (94, 'Week 04', 'Medical', '2024-04-22', 'Excused', 7, 1, 1), (95, 'Week 05', 'Medical', '2024-04-29', 'Excused', 7, 1, 1), (96, 'Week 06', 'Present', '2024-05-06', 'Attended', 7, 1, 1), (97, 'Week 07', 'Present', '2024-05-13', 'Attended', 7, 1, 1), (98, 'Week 08', 'Present', '2024-05-20', 'Attended', 7, 1, 1), (99, 'Week 09', 'Present', '2024-05-27', 'Attended', 7, 1, 1), (100, 'Week 10', 'Present', '2024-06-03', 'Attended', 7, 1, 1), (101, 'Week 11', 'Present', '2024-06-10', 'Attended', 7, 1, 1), (102, 'Week 12', 'Present', '2024-06-17', 'Attended', 7, 1, 1), (103, 'Week 13', 'Present', '2024-06-24', 'Attended', 7, 1, 1), (104, 'Week 14', 'Present', '2024-07-01', 'Attended', 7, 1, 1), (105, 'Week 15', 'Present', '2024-07-08', 'Attended', 7, 1, 1),
 
--- CATEGORY 3: With Medical, reaches >=80% - ELIGIBLE
--- Student 2 - Course 2 - 10 Present + 3 Medical = 13/15 = 86% - ELIGIBLE
-(61, 'Theory', 'Present', '2024-03-04', 'Eligible', 2, 2, 2),
-(62, 'Theory', 'Present', '2024-03-11', 'Eligible', 2, 2, 2),
-(63, 'Theory', 'Present', '2024-03-18', 'Eligible', 2, 2, 2),
-(64, 'Theory', 'Present', '2024-03-25', 'Eligible', 2, 2, 2),
-(65, 'Theory', 'Medical', '2024-04-01', 'Eligible', 2, 2, 2),
-(66, 'Theory', 'Medical', '2024-04-08', 'Eligible', 2, 2, 2),
-(67, 'Theory', 'Medical', '2024-04-15', 'Eligible', 2, 2, 2),
-(68, 'Theory', 'Present', '2024-04-22', 'Eligible', 2, 2, 2),
-(69, 'Theory', 'Present', '2024-04-29', 'Eligible', 2, 2, 2),
-(70, 'Theory', 'Present', '2024-05-06', 'Eligible', 2, 2, 2),
-(71, 'Theory', 'Present', '2024-05-13', 'Eligible', 2, 2, 2),
-(72, 'Theory', 'Present', '2024-05-20', 'Eligible', 2, 2, 2),
-(73, 'Theory', 'Present', '2024-05-27', 'Eligible', 2, 2, 2),
-(74, 'Theory', 'Present', '2024-06-03', 'Eligible', 2, 2, 2),
-(75, 'Theory', 'Present', '2024-06-10', 'Eligible', 2, 2, 2),
+-- Students 8, 9, 10, 11, 12 (100% Present)
+(106, 'Week 01', 'Present', '2024-04-01', 'Attended', 8, 1, 1), (107, 'Week 02', 'Present', '2024-04-08', 'Attended', 8, 1, 1), (108, 'Week 03', 'Present', '2024-04-15', 'Attended', 8, 1, 1), (109, 'Week 04', 'Present', '2024-04-22', 'Attended', 8, 1, 1), (110, 'Week 05', 'Present', '2024-04-29', 'Attended', 8, 1, 1), (111, 'Week 06', 'Present', '2024-05-06', 'Attended', 8, 1, 1), (112, 'Week 07', 'Present', '2024-05-13', 'Attended', 8, 1, 1), (113, 'Week 08', 'Present', '2024-05-20', 'Attended', 8, 1, 1), (114, 'Week 09', 'Present', '2024-05-27', 'Attended', 8, 1, 1), (115, 'Week 10', 'Present', '2024-06-03', 'Attended', 8, 1, 1), (116, 'Week 11', 'Present', '2024-06-10', 'Attended', 8, 1, 1), (117, 'Week 12', 'Present', '2024-06-17', 'Attended', 8, 1, 1), (118, 'Week 13', 'Present', '2024-06-24', 'Attended', 8, 1, 1), (119, 'Week 14', 'Present', '2024-07-01', 'Attended', 8, 1, 1), (120, 'Week 15', 'Present', '2024-07-08', 'Attended', 8, 1, 1),
+(121, 'Week 01', 'Present', '2024-04-01', 'Attended', 9, 1, 1), (122, 'Week 02', 'Present', '2024-04-08', 'Attended', 9, 1, 1), (123, 'Week 03', 'Present', '2024-04-15', 'Attended', 9, 1, 1), (124, 'Week 04', 'Present', '2024-04-22', 'Attended', 9, 1, 1), (125, 'Week 05', 'Present', '2024-04-29', 'Attended', 9, 1, 1), (126, 'Week 06', 'Present', '2024-05-06', 'Attended', 9, 1, 1), (127, 'Week 07', 'Present', '2024-05-13', 'Attended', 9, 1, 1), (128, 'Week 08', 'Present', '2024-05-20', 'Attended', 9, 1, 1), (129, 'Week 09', 'Present', '2024-05-27', 'Attended', 9, 1, 1), (130, 'Week 10', 'Present', '2024-06-03', 'Attended', 9, 1, 1), (131, 'Week 11', 'Present', '2024-06-10', 'Attended', 9, 1, 1), (132, 'Week 12', 'Present', '2024-06-17', 'Attended', 9, 1, 1), (133, 'Week 13', 'Present', '2024-06-24', 'Attended', 9, 1, 1), (134, 'Week 14', 'Present', '2024-07-01', 'Attended', 9, 1, 1), (135, 'Week 15', 'Present', '2024-07-08', 'Attended', 9, 1, 1),
+(136, 'Week 01', 'Present', '2024-04-01', 'Attended', 10, 1, 1), (137, 'Week 02', 'Present', '2024-04-08', 'Attended', 10, 1, 1), (138, 'Week 03', 'Present', '2024-04-15', 'Attended', 10, 1, 1), (139, 'Week 04', 'Present', '2024-04-22', 'Attended', 10, 1, 1), (140, 'Week 05', 'Present', '2024-04-29', 'Attended', 10, 1, 1), (141, 'Week 06', 'Present', '2024-05-06', 'Attended', 10, 1, 1), (142, 'Week 07', 'Present', '2024-05-13', 'Attended', 10, 1, 1), (143, 'Week 08', 'Present', '2024-05-20', 'Attended', 10, 1, 1), (144, 'Week 09', 'Present', '2024-05-27', 'Attended', 10, 1, 1), (145, 'Week 10', 'Present', '2024-06-03', 'Attended', 10, 1, 1), (146, 'Week 11', 'Present', '2024-06-10', 'Attended', 10, 1, 1), (147, 'Week 12', 'Present', '2024-06-17', 'Attended', 10, 1, 1), (148, 'Week 13', 'Present', '2024-06-24', 'Attended', 10, 1, 1), (149, 'Week 14', 'Present', '2024-07-01', 'Attended', 10, 1, 1), (150, 'Week 15', 'Present', '2024-07-08', 'Attended', 10, 1, 1),
+(151, 'Week 01', 'Present', '2024-04-01', 'Attended', 11, 1, 1), (152, 'Week 02', 'Present', '2024-04-08', 'Attended', 11, 1, 1), (153, 'Week 03', 'Present', '2024-04-15', 'Attended', 11, 1, 1), (154, 'Week 04', 'Present', '2024-04-22', 'Attended', 11, 1, 1), (155, 'Week 05', 'Present', '2024-04-29', 'Attended', 11, 1, 1), (156, 'Week 06', 'Present', '2024-05-06', 'Attended', 11, 1, 1), (157, 'Week 07', 'Present', '2024-05-13', 'Attended', 11, 1, 1), (158, 'Week 08', 'Present', '2024-05-20', 'Attended', 11, 1, 1), (159, 'Week 09', 'Present', '2024-05-27', 'Attended', 11, 1, 1), (160, 'Week 10', 'Present', '2024-06-03', 'Attended', 11, 1, 1), (161, 'Week 11', 'Present', '2024-06-10', 'Attended', 11, 1, 1), (162, 'Week 12', 'Present', '2024-06-17', 'Attended', 11, 1, 1), (163, 'Week 13', 'Present', '2024-06-24', 'Attended', 11, 1, 1), (164, 'Week 14', 'Present', '2024-07-01', 'Attended', 11, 1, 1), (165, 'Week 15', 'Present', '2024-07-08', 'Attended', 11, 1, 1),
+(166, 'Week 01', 'Present', '2024-04-01', 'Attended', 12, 1, 1), (167, 'Week 02', 'Present', '2024-04-08', 'Attended', 12, 1, 1), (168, 'Week 03', 'Present', '2024-04-15', 'Attended', 12, 1, 1), (169, 'Week 04', 'Present', '2024-04-22', 'Attended', 12, 1, 1), (170, 'Week 05', 'Present', '2024-04-29', 'Attended', 12, 1, 1), (171, 'Week 06', 'Present', '2024-05-06', 'Attended', 12, 1, 1), (172, 'Week 07', 'Present', '2024-05-13', 'Attended', 12, 1, 1), (173, 'Week 08', 'Present', '2024-05-20', 'Attended', 12, 1, 1), (174, 'Week 09', 'Present', '2024-05-27', 'Attended', 12, 1, 1), (175, 'Week 10', 'Present', '2024-06-03', 'Attended', 12, 1, 1), (176, 'Week 11', 'Present', '2024-06-10', 'Attended', 12, 1, 1), (177, 'Week 12', 'Present', '2024-06-17', 'Attended', 12, 1, 1), (178, 'Week 13', 'Present', '2024-06-24', 'Attended', 12, 1, 1), (179, 'Week 14', 'Present', '2024-07-01', 'Attended', 12, 1, 1), (180, 'Week 15', 'Present', '2024-07-08', 'Attended', 12, 1, 1),
 
--- CATEGORY 4: With Medical, still <80% - NOT ELIGIBLE
--- Student 6 - Course 2 - 7 Present + 2 Medical = 9/15 = 60% - NOT ELIGIBLE
-(76, 'Theory', 'Present', '2024-03-04', 'Not Eligible', 6, 2, 2),
-(77, 'Theory', 'Absent',  '2024-03-11', 'Not Eligible', 6, 2, 2),
-(78, 'Theory', 'Present', '2024-03-18', 'Not Eligible', 6, 2, 2),
-(79, 'Theory', 'Absent',  '2024-03-25', 'Not Eligible', 6, 2, 2),
-(80, 'Theory', 'Medical', '2024-04-01', 'Not Eligible', 6, 2, 2),
-(81, 'Theory', 'Absent',  '2024-04-08', 'Not Eligible', 6, 2, 2),
-(82, 'Theory', 'Medical', '2024-04-15', 'Not Eligible', 6, 2, 2),
-(83, 'Theory', 'Absent',  '2024-04-22', 'Not Eligible', 6, 2, 2),
-(84, 'Theory', 'Present', '2024-04-29', 'Not Eligible', 6, 2, 2),
-(85, 'Theory', 'Absent',  '2024-05-06', 'Not Eligible', 6, 2, 2),
-(86, 'Theory', 'Present', '2024-05-13', 'Not Eligible', 6, 2, 2),
-(87, 'Theory', 'Absent',  '2024-05-20', 'Not Eligible', 6, 2, 2),
-(88, 'Theory', 'Present', '2024-05-27', 'Not Eligible', 6, 2, 2),
-(89, 'Theory', 'Present', '2024-06-03', 'Not Eligible', 6, 2, 2),
-(90, 'Theory', 'Absent',  '2024-06-10', 'Not Eligible', 6, 2, 2),
+-- Student 13 (Fail - Only 4 sessions / ~26%)
+(181, 'Week 01', 'Present', '2024-04-01', 'Attended', 13, 1, 1), (182, 'Week 02', 'Absent', '2024-04-08', 'Not Attended', 13, 1, 1), (183, 'Week 03', 'Absent', '2024-04-15', 'Not Attended', 13, 1, 1), (184, 'Week 04', 'Absent', '2024-04-22', 'Not Attended', 13, 1, 1), (185, 'Week 05', 'Absent', '2024-04-29', 'Not Attended', 13, 1, 1), (186, 'Week 06', 'Absent', '2024-05-06', 'Not Attended', 13, 1, 1), (187, 'Week 07', 'Present', '2024-05-13', 'Attended', 13, 1, 1), (188, 'Week 08', 'Absent', '2024-05-20', 'Not Attended', 13, 1, 1), (189, 'Week 09', 'Absent', '2024-05-27', 'Not Attended', 13, 1, 1), (190, 'Week 10', 'Present', '2024-06-03', 'Attended', 13, 1, 1), (191, 'Week 11', 'Absent', '2024-06-10', 'Not Attended', 13, 1, 1), (192, 'Week 12', 'Absent', '2024-06-17', 'Not Attended', 13, 1, 1), (193, 'Week 13', 'Present', '2024-06-24', 'Attended', 13, 1, 1), (194, 'Week 14', 'Absent', '2024-07-01', 'Not Attended', 13, 1, 1), (195, 'Week 15', 'Absent', '2024-07-08', 'Not Attended', 13, 1, 1),
 
--- REMAINING STUDENTS (eligible attendance)
--- Students 6,7,8,9,10,11-15,16 - Course 1
+-- Students 14, 15, 16 (100% Present)
+(196, 'Week 01', 'Present', '2024-04-01', 'Attended', 14, 1, 1), (197, 'Week 02', 'Present', '2024-04-08', 'Attended', 14, 1, 1), (198, 'Week 03', 'Present', '2024-04-15', 'Attended', 14, 1, 1), (199, 'Week 04', 'Present', '2024-04-22', 'Attended', 14, 1, 1), (200, 'Week 05', 'Present', '2024-04-29', 'Attended', 14, 1, 1), (201, 'Week 06', 'Present', '2024-05-06', 'Attended', 14, 1, 1), (202, 'Week 07', 'Present', '2024-05-13', 'Attended', 14, 1, 1), (203, 'Week 08', 'Present', '2024-05-20', 'Attended', 14, 1, 1), (204, 'Week 09', 'Present', '2024-05-27', 'Attended', 14, 1, 1), (205, 'Week 10', 'Present', '2024-06-03', 'Attended', 14, 1, 1), (206, 'Week 11', 'Present', '2024-06-10', 'Attended', 14, 1, 1), (207, 'Week 12', 'Present', '2024-06-17', 'Attended', 14, 1, 1), (208, 'Week 13', 'Present', '2024-06-24', 'Attended', 14, 1, 1), (209, 'Week 14', 'Present', '2024-07-01', 'Attended', 14, 1, 1), (210, 'Week 15', 'Present', '2024-07-08', 'Attended', 14, 1, 1),
+(211, 'Week 01', 'Present', '2024-04-01', 'Attended', 15, 1, 1), (212, 'Week 02', 'Present', '2024-04-08', 'Attended', 15, 1, 1), (213, 'Week 03', 'Present', '2024-04-15', 'Attended', 15, 1, 1), (214, 'Week 04', 'Present', '2024-04-22', 'Attended', 15, 1, 1), (215, 'Week 05', 'Present', '2024-04-29', 'Attended', 15, 1, 1), (216, 'Week 06', 'Present', '2024-05-06', 'Attended', 15, 1, 1), (217, 'Week 07', 'Present', '2024-05-13', 'Attended', 15, 1, 1), (218, 'Week 08', 'Present', '2024-05-20', 'Attended', 15, 1, 1), (219, 'Week 09', 'Present', '2024-05-27', 'Attended', 15, 1, 1), (220, 'Week 10', 'Present', '2024-06-03', 'Attended', 15, 1, 1), (221, 'Week 11', 'Present', '2024-06-10', 'Attended', 15, 1, 1), (222, 'Week 12', 'Present', '2024-06-17', 'Attended', 15, 1, 1), (223, 'Week 13', 'Present', '2024-06-24', 'Attended', 15, 1, 1), (224, 'Week 14', 'Present', '2024-07-01', 'Attended', 15, 1, 1), (225, 'Week 15', 'Present', '2024-07-08', 'Attended', 15, 1, 1),
+(226, 'Week 01', 'Present', '2024-04-01', 'Attended', 16, 1, 1), (227, 'Week 02', 'Present', '2024-04-08', 'Attended', 16, 1, 1), (228, 'Week 03', 'Present', '2024-04-15', 'Attended', 16, 1, 1), (229, 'Week 04', 'Present', '2024-04-22', 'Attended', 16, 1, 1), (230, 'Week 05', 'Present', '2024-04-29', 'Attended', 16, 1, 1), (231, 'Week 06', 'Present', '2024-05-06', 'Attended', 16, 1, 1), (232, 'Week 07', 'Present', '2024-05-13', 'Attended', 16, 1, 1), (233, 'Week 08', 'Present', '2024-05-20', 'Attended', 16, 1, 1), (234, 'Week 09', 'Present', '2024-05-27', 'Attended', 16, 1, 1), (235, 'Week 10', 'Present', '2024-06-03', 'Attended', 16, 1, 1), (236, 'Week 11', 'Present', '2024-06-10', 'Attended', 16, 1, 1), (237, 'Week 12', 'Present', '2024-06-17', 'Attended', 16, 1, 1), (238, 'Week 13', 'Present', '2024-06-24', 'Attended', 16, 1, 1), (239, 'Week 14', 'Present', '2024-07-01', 'Attended', 16, 1, 1), (240, 'Week 15', 'Present', '2024-07-08', 'Attended', 16, 1, 1);
 
--- Student 6 - Course 1 (13/15 Present)
-(91,  'Practical', 'Present', '2024-03-04', 'Eligible', 6, 1, 1),
-(92,  'Practical', 'Present', '2024-03-11', 'Eligible', 6, 1, 1),
-(93,  'Practical', 'Present', '2024-03-18', 'Eligible', 6, 1, 1),
-(94,  'Practical', 'Present', '2024-03-25', 'Eligible', 6, 1, 1),
-(95,  'Practical', 'Present', '2024-04-01', 'Eligible', 6, 1, 1),
-(96,  'Practical', 'Present', '2024-04-08', 'Eligible', 6, 1, 1),
-(97,  'Practical', 'Present', '2024-04-15', 'Eligible', 6, 1, 1),
-(98,  'Practical', 'Present', '2024-04-22', 'Eligible', 6, 1, 1),
-(99,  'Practical', 'Present', '2024-04-29', 'Eligible', 6, 1, 1),
-(100, 'Practical', 'Present', '2024-05-06', 'Eligible', 6, 1, 1),
-(101, 'Practical', 'Present', '2024-05-13', 'Eligible', 6, 1, 1),
-(102, 'Practical', 'Present', '2024-05-20', 'Eligible', 6, 1, 1),
-(103, 'Practical', 'Present', '2024-05-27', 'Eligible', 6, 1, 1),
-(104, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 6, 1, 1),
-(105, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 6, 1, 1),
 
--- Student 7 - Course 1 (12/15 Present = exactly 80%)
-(106, 'Practical', 'Present', '2024-03-04', 'Eligible', 7, 1, 1),
-(107, 'Practical', 'Present', '2024-03-11', 'Eligible', 7, 1, 1),
-(108, 'Practical', 'Present', '2024-03-18', 'Eligible', 7, 1, 1),
-(109, 'Practical', 'Present', '2024-03-25', 'Eligible', 7, 1, 1),
-(110, 'Practical', 'Present', '2024-04-01', 'Eligible', 7, 1, 1),
-(111, 'Practical', 'Present', '2024-04-08', 'Eligible', 7, 1, 1),
-(112, 'Practical', 'Present', '2024-04-15', 'Eligible', 7, 1, 1),
-(113, 'Practical', 'Present', '2024-04-22', 'Eligible', 7, 1, 1),
-(114, 'Practical', 'Present', '2024-04-29', 'Eligible', 7, 1, 1),
-(115, 'Practical', 'Present', '2024-05-06', 'Eligible', 7, 1, 1),
-(116, 'Practical', 'Present', '2024-05-13', 'Eligible', 7, 1, 1),
-(117, 'Practical', 'Present', '2024-05-20', 'Eligible', 7, 1, 1),
-(118, 'Practical', 'Absent',  '2024-05-27', 'Eligible', 7, 1, 1),
-(119, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 7, 1, 1),
-(120, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 7, 1, 1),
+INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
+(1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
+(2, '0772345678'),
+(3, '0773456789'), (3, '0112223344'), -- Student 3 has two numbers
+(4, '0774567890'),
+(5, '0775678901'),
+(6, '0776789012'), (6, '0765554433'), -- Student 6 has two numbers
+(7, '0777890123'),
+(8, '0778901234'),
+(9, '0779012345'),
+(10, '0770123456'),
+(11, '0711112222'),
+(12, '0722223333'),
+(13, '0755556666'), (13, '0788889999'), -- Student 13 has two numbers
+(14, '0707778888'),
+(15, '0779990000'),
+(16, '0710001111');
 
--- Student 8 - Course 1 (13/15 Present)
-(121, 'Practical', 'Present', '2024-03-04', 'Eligible', 8, 1, 1),
-(122, 'Practical', 'Present', '2024-03-11', 'Eligible', 8, 1, 1),
-(123, 'Practical', 'Present', '2024-03-18', 'Eligible', 8, 1, 1),
-(124, 'Practical', 'Present', '2024-03-25', 'Eligible', 8, 1, 1),
-(125, 'Practical', 'Present', '2024-04-01', 'Eligible', 8, 1, 1),
-(126, 'Practical', 'Present', '2024-04-08', 'Eligible', 8, 1, 1),
-(127, 'Practical', 'Present', '2024-04-15', 'Eligible', 8, 1, 1),
-(128, 'Practical', 'Present', '2024-04-22', 'Eligible', 8, 1, 1),
-(129, 'Practical', 'Present', '2024-04-29', 'Eligible', 8, 1, 1),
-(130, 'Practical', 'Present', '2024-05-06', 'Eligible', 8, 1, 1),
-(131, 'Practical', 'Present', '2024-05-13', 'Eligible', 8, 1, 1),
-(132, 'Practical', 'Present', '2024-05-20', 'Eligible', 8, 1, 1),
-(133, 'Practical', 'Present', '2024-05-27', 'Eligible', 8, 1, 1),
-(134, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 8, 1, 1),
-(135, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 8, 1, 1),
+INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID, Sgpa, Cgpa, Eligibility_Status, Student_ID, course_ID) VALUES 
+-- High Achievers
+(1, 38.50, 52.00, 90.50, 1, 4.00, 3.85, 'Eligible', 1, 1),
+(2, 35.00, 50.00, 85.00, 1, 4.00, 3.70, 'Eligible', 2, 1),
+(3, 32.00, 48.00, 80.00, 2, 3.70, 3.65, 'Eligible', 3, 1),
+(4, 30.00, 46.00, 76.00, 3, 3.30, 3.40, 'Eligible', 4, 1),
 
--- Student 9 - Course 1 (14/15 Present)
-(136, 'Practical', 'Present', '2024-03-04', 'Eligible', 9, 1, 1),
-(137, 'Practical', 'Present', '2024-03-11', 'Eligible', 9, 1, 1),
-(138, 'Practical', 'Present', '2024-03-18', 'Eligible', 9, 1, 1),
-(139, 'Practical', 'Present', '2024-03-25', 'Eligible', 9, 1, 1),
-(140, 'Practical', 'Present', '2024-04-01', 'Eligible', 9, 1, 1),
-(141, 'Practical', 'Present', '2024-04-08', 'Eligible', 9, 1, 1),
-(142, 'Practical', 'Present', '2024-04-15', 'Eligible', 9, 1, 1),
-(143, 'Practical', 'Present', '2024-04-22', 'Eligible', 9, 1, 1),
-(144, 'Practical', 'Present', '2024-04-29', 'Eligible', 9, 1, 1),
-(145, 'Practical', 'Present', '2024-05-06', 'Eligible', 9, 1, 1),
-(146, 'Practical', 'Present', '2024-05-13', 'Eligible', 9, 1, 1),
-(147, 'Practical', 'Present', '2024-05-20', 'Eligible', 9, 1, 1),
-(148, 'Practical', 'Present', '2024-05-27', 'Eligible', 9, 1, 1),
-(149, 'Practical', 'Present', '2024-06-03', 'Eligible', 9, 1, 1),
-(150, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 9, 1, 1),
+-- Attendance Failure (Student 5 - Ineligible)
+(5, 0.00, 0.00, 0.00, 11, 0.00, 2.10, 'Ineligible', 5, 1),
 
--- Student 10 - Course 1 (14/15 Present)
-(151, 'Practical', 'Present', '2024-03-04', 'Eligible', 10, 1, 1),
-(152, 'Practical', 'Present', '2024-03-11', 'Eligible', 10, 1, 1),
-(153, 'Practical', 'Present', '2024-03-18', 'Eligible', 10, 1, 1),
-(154, 'Practical', 'Present', '2024-03-25', 'Eligible', 10, 1, 1),
-(155, 'Practical', 'Present', '2024-04-01', 'Eligible', 10, 1, 1),
-(156, 'Practical', 'Present', '2024-04-08', 'Eligible', 10, 1, 1),
-(157, 'Practical', 'Present', '2024-04-15', 'Eligible', 10, 1, 1),
-(158, 'Practical', 'Present', '2024-04-22', 'Eligible', 10, 1, 1),
-(159, 'Practical', 'Present', '2024-04-29', 'Eligible', 10, 1, 1),
-(160, 'Practical', 'Present', '2024-05-06', 'Eligible', 10, 1, 1),
-(161, 'Practical', 'Present', '2024-05-13', 'Eligible', 10, 1, 1),
-(162, 'Practical', 'Present', '2024-05-20', 'Eligible', 10, 1, 1),
-(163, 'Practical', 'Present', '2024-05-27', 'Eligible', 10, 1, 1),
-(164, 'Practical', 'Present', '2024-06-03', 'Eligible', 10, 1, 1),
-(165, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 10, 1, 1),
+-- Average Students
+(6, 28.00, 42.00, 70.00, 4, 3.00, 3.15, 'Eligible', 6, 1),
+(7, 25.00, 35.00, 60.00, 6, 2.30, 2.80, 'Eligible', 7, 1), -- Medical Case (Eligible)
+(8, 31.00, 44.00, 75.00, 3, 3.30, 3.55, 'Eligible', 8, 1),
+(9, 27.50, 38.00, 65.50, 5, 2.70, 2.90, 'Eligible', 9, 1),
+(10, 22.00, 33.00, 55.00, 7, 2.00, 2.40, 'Eligible', 10, 1),
+(11, 29.00, 41.00, 70.00, 4, 3.00, 3.20, 'Eligible', 11, 1),
+(12, 24.00, 36.00, 60.00, 6, 2.30, 2.75, 'Eligible', 12, 1),
 
--- Student 11 - Course 1 (13/15 Present)
-(166, 'Practical', 'Present', '2024-03-04', 'Eligible', 11, 1, 1),
-(167, 'Practical', 'Present', '2024-03-11', 'Eligible', 11, 1, 1),
-(168, 'Practical', 'Present', '2024-03-18', 'Eligible', 11, 1, 1),
-(169, 'Practical', 'Present', '2024-03-25', 'Eligible', 11, 1, 1),
-(170, 'Practical', 'Present', '2024-04-01', 'Eligible', 11, 1, 1),
-(171, 'Practical', 'Present', '2024-04-08', 'Eligible', 11, 1, 1),
-(172, 'Practical', 'Present', '2024-04-15', 'Eligible', 11, 1, 1),
-(173, 'Practical', 'Present', '2024-04-22', 'Eligible', 11, 1, 1),
-(174, 'Practical', 'Present', '2024-04-29', 'Eligible', 11, 1, 1),
-(175, 'Practical', 'Present', '2024-05-06', 'Eligible', 11, 1, 1),
-(176, 'Practical', 'Present', '2024-05-13', 'Eligible', 11, 1, 1),
-(177, 'Practical', 'Present', '2024-05-20', 'Eligible', 11, 1, 1),
-(178, 'Practical', 'Present', '2024-05-27', 'Eligible', 11, 1, 1),
-(179, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 11, 1, 1),
-(180, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 11, 1, 1),
+-- Attendance Failure (Student 13 - Ineligible)
+(13, 0.00, 0.00, 0.00, 11, 0.00, 1.85, 'Ineligible', 13, 1),
 
--- Student 12 - Course 1 (13/15 Present)
-(181, 'Practical', 'Present', '2024-03-04', 'Eligible', 12, 1, 1),
-(182, 'Practical', 'Present', '2024-03-11', 'Eligible', 12, 1, 1),
-(183, 'Practical', 'Present', '2024-03-18', 'Eligible', 12, 1, 1),
-(184, 'Practical', 'Present', '2024-03-25', 'Eligible', 12, 1, 1),
-(185, 'Practical', 'Present', '2024-04-01', 'Eligible', 12, 1, 1),
-(186, 'Practical', 'Present', '2024-04-08', 'Eligible', 12, 1, 1),
-(187, 'Practical', 'Present', '2024-04-15', 'Eligible', 12, 1, 1),
-(188, 'Practical', 'Present', '2024-04-22', 'Eligible', 12, 1, 1),
-(189, 'Practical', 'Present', '2024-04-29', 'Eligible', 12, 1, 1),
-(190, 'Practical', 'Present', '2024-05-06', 'Eligible', 12, 1, 1),
-(191, 'Practical', 'Present', '2024-05-13', 'Eligible', 12, 1, 1),
-(192, 'Practical', 'Present', '2024-05-20', 'Eligible', 12, 1, 1),
-(193, 'Practical', 'Present', '2024-05-27', 'Eligible', 12, 1, 1),
-(194, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 12, 1, 1),
-(195, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 12, 1, 1),
-
--- Student 13 - Course 1 (13/15 Present)
-(196, 'Practical', 'Present', '2024-03-04', 'Eligible', 13, 1, 1),
-(197, 'Practical', 'Present', '2024-03-11', 'Eligible', 13, 1, 1),
-(198, 'Practical', 'Present', '2024-03-18', 'Eligible', 13, 1, 1),
-(199, 'Practical', 'Present', '2024-03-25', 'Eligible', 13, 1, 1),
-(200, 'Practical', 'Present', '2024-04-01', 'Eligible', 13, 1, 1),
-(201, 'Practical', 'Present', '2024-04-08', 'Eligible', 13, 1, 1),
-(202, 'Practical', 'Present', '2024-04-15', 'Eligible', 13, 1, 1),
-(203, 'Practical', 'Present', '2024-04-22', 'Eligible', 13, 1, 1),
-(204, 'Practical', 'Present', '2024-04-29', 'Eligible', 13, 1, 1),
-(205, 'Practical', 'Present', '2024-05-06', 'Eligible', 13, 1, 1),
-(206, 'Practical', 'Present', '2024-05-13', 'Eligible', 13, 1, 1),
-(207, 'Practical', 'Present', '2024-05-20', 'Eligible', 13, 1, 1),
-(208, 'Practical', 'Present', '2024-05-27', 'Eligible', 13, 1, 1),
-(209, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 13, 1, 1),
-(210, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 13, 1, 1),
-
--- Student 14 - Course 1 (13/15 Present)
-(211, 'Practical', 'Present', '2024-03-04', 'Eligible', 14, 1, 1),
-(212, 'Practical', 'Present', '2024-03-11', 'Eligible', 14, 1, 1),
-(213, 'Practical', 'Present', '2024-03-18', 'Eligible', 14, 1, 1),
-(214, 'Practical', 'Present', '2024-03-25', 'Eligible', 14, 1, 1),
-(215, 'Practical', 'Present', '2024-04-01', 'Eligible', 14, 1, 1),
-(216, 'Practical', 'Present', '2024-04-08', 'Eligible', 14, 1, 1),
-(217, 'Practical', 'Present', '2024-04-15', 'Eligible', 14, 1, 1),
-(218, 'Practical', 'Present', '2024-04-22', 'Eligible', 14, 1, 1),
-(219, 'Practical', 'Present', '2024-04-29', 'Eligible', 14, 1, 1),
-(220, 'Practical', 'Present', '2024-05-06', 'Eligible', 14, 1, 1),
-(221, 'Practical', 'Present', '2024-05-13', 'Eligible', 14, 1, 1),
-(222, 'Practical', 'Present', '2024-05-20', 'Eligible', 14, 1, 1),
-(223, 'Practical', 'Present', '2024-05-27', 'Eligible', 14, 1, 1),
-(224, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 14, 1, 1),
-(225, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 14, 1, 1),
-
--- Student 15 - Course 1 (13/15 Present)
-(226, 'Practical', 'Present', '2024-03-04', 'Eligible', 15, 1, 1),
-(227, 'Practical', 'Present', '2024-03-11', 'Eligible', 15, 1, 1),
-(228, 'Practical', 'Present', '2024-03-18', 'Eligible', 15, 1, 1),
-(229, 'Practical', 'Present', '2024-03-25', 'Eligible', 15, 1, 1),
-(230, 'Practical', 'Present', '2024-04-01', 'Eligible', 15, 1, 1),
-(231, 'Practical', 'Present', '2024-04-08', 'Eligible', 15, 1, 1),
-(232, 'Practical', 'Present', '2024-04-15', 'Eligible', 15, 1, 1),
-(233, 'Practical', 'Present', '2024-04-22', 'Eligible', 15, 1, 1),
-(234, 'Practical', 'Present', '2024-04-29', 'Eligible', 15, 1, 1),
-(235, 'Practical', 'Present', '2024-05-06', 'Eligible', 15, 1, 1),
-(236, 'Practical', 'Present', '2024-05-13', 'Eligible', 15, 1, 1),
-(237, 'Practical', 'Present', '2024-05-20', 'Eligible', 15, 1, 1),
-(238, 'Practical', 'Present', '2024-05-27', 'Eligible', 15, 1, 1),
-(239, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 15, 1, 1),
-(240, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 15, 1, 1),
-
--- Student 16 (Suspended) - Course 1 (13/15 Present)
-(241, 'Practical', 'Present', '2024-03-04', 'Eligible', 16, 1, 1),
-(242, 'Practical', 'Present', '2024-03-11', 'Eligible', 16, 1, 1),
-(243, 'Practical', 'Present', '2024-03-18', 'Eligible', 16, 1, 1),
-(244, 'Practical', 'Present', '2024-03-25', 'Eligible', 16, 1, 1),
-(245, 'Practical', 'Present', '2024-04-01', 'Eligible', 16, 1, 1),
-(246, 'Practical', 'Present', '2024-04-08', 'Eligible', 16, 1, 1),
-(247, 'Practical', 'Present', '2024-04-15', 'Eligible', 16, 1, 1),
-(248, 'Practical', 'Present', '2024-04-22', 'Eligible', 16, 1, 1),
-(249, 'Practical', 'Present', '2024-04-29', 'Eligible', 16, 1, 1),
-(250, 'Practical', 'Present', '2024-05-06', 'Eligible', 16, 1, 1),
-(251, 'Practical', 'Present', '2024-05-13', 'Eligible', 16, 1, 1),
-(252, 'Practical', 'Present', '2024-05-20', 'Eligible', 16, 1, 1),
-(253, 'Practical', 'Present', '2024-05-27', 'Eligible', 16, 1, 1),
-(254, 'Practical', 'Absent',  '2024-06-03', 'Eligible', 16, 1, 1),
-(255, 'Practical', 'Absent',  '2024-06-10', 'Eligible', 16, 1, 1);
+-- Remaining Students
+(14, 26.00, 34.00, 60.00, 6, 2.30, 2.60, 'Eligible', 14, 1),
+(15, 33.00, 47.00, 80.00, 2, 3.70, 3.80, 'Eligible', 15, 1),
+(16, 20.00, 30.00, 50.00, 8, 1.70, 2.15, 'Eligible', 16, 1);
