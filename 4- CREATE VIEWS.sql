@@ -111,3 +111,92 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 WHERE a.session IN ('Theory', 'Practical')
 ORDER BY s.Reg_No, cu.Course_code, a.Date;
+
+
+
+-- View  CA marks for all students and all courses
+CREATE OR REPLACE VIEW VIEWCA_Marks_Batch AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    at.Asses_Name,
+    m.Marks,
+    m.Medi_Status,
+    m.Exam_Date
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name != 'Final';
+
+
+
+-- View  CA marks ordered by course code
+CREATE OR REPLACE VIEW VIEWCA_Marks_By_Course AS
+SELECT 
+    cu.Course_code,
+    s.Reg_No,
+    s.Full_name,
+    at.Asses_Name,
+    m.Marks,
+    m.Medi_Status
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name != 'Final'
+ORDER BY cu.Course_code;
+
+
+
+-- View CA marks ordered by student registration number
+CREATE OR REPLACE VIEW VIEWCA_Marks_Individual AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    at.Asses_Name,
+    m.Marks,
+    m.Medi_Status,
+    m.Exam_Date
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name != 'Final'
+ORDER BY s.Reg_No;
+
+
+
+-- View CA marks ordered by student and course code
+CREATE OR REPLACE VIEW VIEWCA_Marks_Course_Student AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    at.Asses_Name,
+    m.Marks,
+    m.Medi_Status
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name != 'Final'
+ORDER BY s.Reg_No, cu.Course_code;
+
+
+
+-- View average CA marks summary for each student per course
+CREATE OR REPLACE VIEW VIEWCA_Summary_Student AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    ROUND(AVG(m.Marks), 2) AS Average_CA_Marks
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name != 'Final'
+GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
