@@ -680,6 +680,25 @@ VALUES
 (351, '2024-05-20', 78, 'Normal', 16, 5, 4),
 (352, '2024-07-10', 85, 'Normal', 16, 5, 6);
 
+--10. student phone
+INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
+(1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
+(2, '0772345678'),
+(3, '0773456789'), (3, '0112223344'), -- Student 3 has two numbers
+(4, '0774567890'),
+(5, '0775678901'),
+(6, '0776789012'), (6, '0765554433'), -- Student 6 has two numbers
+(7, '0777890123'),
+(8, '0778901234'),
+(9, '0779012345'),
+(10, '0770123456'),
+(11, '0711112222'),
+(12, '0722223333'),
+(13, '0755556666'), (13, '0788889999'), -- Student 13 has two numbers
+(14, '0707778888'),
+(15, '0779990000'),
+(16, '0710001111');
+
 
 --11. attendance
 INSERT INTO Attendance 
@@ -718,24 +737,7 @@ VALUES
 (226, 'Week 01', 'Present', '2024-04-01', 'Attended', 16, 1, 1), (227, 'Week 02', 'Present', '2024-04-08', 'Attended', 16, 1, 1), (228, 'Week 03', 'Present', '2024-04-15', 'Attended', 16, 1, 1), (229, 'Week 04', 'Present', '2024-04-22', 'Attended', 16, 1, 1), (230, 'Week 05', 'Present', '2024-04-29', 'Attended', 16, 1, 1), (231, 'Week 06', 'Present', '2024-05-06', 'Attended', 16, 1, 1), (232, 'Week 07', 'Present', '2024-05-13', 'Attended', 16, 1, 1), (233, 'Week 08', 'Present', '2024-05-20', 'Attended', 16, 1, 1), (234, 'Week 09', 'Present', '2024-05-27', 'Attended', 16, 1, 1), (235, 'Week 10', 'Present', '2024-06-03', 'Attended', 16, 1, 1), (236, 'Week 11', 'Present', '2024-06-10', 'Attended', 16, 1, 1), (237, 'Week 12', 'Present', '2024-06-17', 'Attended', 16, 1, 1), (238, 'Week 13', 'Present', '2024-06-24', 'Attended', 16, 1, 1), (239, 'Week 14', 'Present', '2024-07-01', 'Attended', 16, 1, 1), (240, 'Week 15', 'Present', '2024-07-08', 'Attended', 16, 1, 1);
 
 
-INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
-(1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
-(2, '0772345678'),
-(3, '0773456789'), (3, '0112223344'), -- Student 3 has two numbers
-(4, '0774567890'),
-(5, '0775678901'),
-(6, '0776789012'), (6, '0765554433'), -- Student 6 has two numbers
-(7, '0777890123'),
-(8, '0778901234'),
-(9, '0779012345'),
-(10, '0770123456'),
-(11, '0711112222'),
-(12, '0722223333'),
-(13, '0755556666'), (13, '0788889999'), -- Student 13 has two numbers
-(14, '0707778888'),
-(15, '0779990000'),
-(16, '0710001111');
-
+--12. final result
 INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID, Sgpa, Cgpa, Eligibility_Status, Student_ID, course_ID) VALUES 
 -- High Achievers
 (1, 38.50, 52.00, 90.50, 1, 4.00, 3.85, 'Eligible', 1, 1),
