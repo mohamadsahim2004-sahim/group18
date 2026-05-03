@@ -1,17 +1,29 @@
 USE Group18_DB;
 
 -- view Attendance whole batch 
-CREATE OR REPLACE VIEW VIEWAttendance_Batch     AS
+
+CREATE OR REPLACE VIEW VIEWAttendance_Batch AS
 SELECT 
     s.Reg_No,
     s.Full_name,
     cu.Course_code,
-    a.Date,
-    a.session,
-    a.Status
+    COUNT(a.Atten_ID) AS Total_Sessions,
+    SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS Present_Count,
+    ROUND(
+        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+        COUNT(a.Atten_ID)) * 100, 2
+    ) AS Attendance_Percentage,
+    CASE 
+        WHEN ROUND(
+            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+            COUNT(a.Atten_ID)) * 100, 2
+        ) >= 80 THEN 'Eligible'
+        ELSE 'Not Eligible'
+    END AS Eligibility
 FROM Student s
 JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID;
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
 -- view Attendance by course 
 
@@ -128,7 +140,7 @@ FROM Student s
 JOIN Marks m ON s.Student_ID = m.Student_ID
 JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name != 'Final';
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical');
 
 -- View  CA marks ordered by course code
 
@@ -162,7 +174,7 @@ FROM Student s
 JOIN Marks m ON s.Student_ID = m.Student_ID
 JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name != 'Final'
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY s.Reg_No;
 
 -- View CA marks ordered by student and course code
@@ -179,7 +191,7 @@ FROM Student s
 JOIN Marks m ON s.Student_ID = m.Student_ID
 JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name != 'Final'
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY s.Reg_No, cu.Course_code;
 
 -- View average CA marks summary for each student per course
@@ -194,7 +206,7 @@ FROM Student s
 JOIN Marks m ON s.Student_ID = m.Student_ID
 JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name != 'Final'
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
 -- View eligibility status for each student individually
