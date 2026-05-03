@@ -1,3 +1,6 @@
+CREATE database Group18_DB;
+USE Group18_DB;
+
 CREATE TABLE Department (
     Dept_ID INT PRIMARY KEY,
     Dept_name VARCHAR(100),
