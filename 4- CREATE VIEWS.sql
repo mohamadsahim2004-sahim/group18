@@ -1,3 +1,4 @@
+USE Group18_DB;
 
 -- view Attendance whole batch 
 CREATE OR REPLACE VIEW VIEWAttendance_Batch     AS
@@ -112,9 +113,8 @@ JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 WHERE a.session IN ('Theory', 'Practical')
 ORDER BY s.Reg_No, cu.Course_code, a.Date;
 
-
-
 -- View  CA marks for all students and all courses
+
 CREATE OR REPLACE VIEW VIEWCA_Marks_Batch AS
 SELECT 
     s.Reg_No,
@@ -130,9 +130,8 @@ JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name != 'Final';
 
-
-
 -- View  CA marks ordered by course code
+
 CREATE OR REPLACE VIEW VIEWCA_Marks_By_Course AS
 SELECT 
     cu.Course_code,
@@ -145,12 +144,11 @@ FROM Student s
 JOIN Marks m ON s.Student_ID = m.Student_ID
 JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name != 'Final'
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY cu.Course_code;
 
-
-
 -- View CA marks ordered by student registration number
+
 CREATE OR REPLACE VIEW VIEWCA_Marks_Individual AS
 SELECT 
     s.Reg_No,
@@ -167,9 +165,8 @@ JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name != 'Final'
 ORDER BY s.Reg_No;
 
-
-
 -- View CA marks ordered by student and course code
+
 CREATE OR REPLACE VIEW VIEWCA_Marks_Course_Student AS
 SELECT 
     s.Reg_No,
@@ -185,9 +182,8 @@ JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name != 'Final'
 ORDER BY s.Reg_No, cu.Course_code;
 
-
-
 -- View average CA marks summary for each student per course
+
 CREATE OR REPLACE VIEW VIEWCA_Summary_Student AS
 SELECT 
     s.Reg_No,
@@ -200,3 +196,70 @@ JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name != 'Final'
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
+
+-- View eligibility status for each student individually
+
+CREATE OR REPLACE VIEW VIEWEligibility_Individual AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    fr.Eligibility_Status,
+    fr.CA_Marks,
+    fr.Total_Marks
+FROM Student s
+JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
+JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
+ORDER BY s.Reg_No;
+
+-- View eligibility status for all students in whole batch
+
+CREATE OR REPLACE VIEW VIEWEligibility_Batch AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    s.Status AS Student_Status,
+    cu.Course_code,
+    fr.CA_Marks,
+    fr.Eligibility_Status
+FROM Student s
+JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
+JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
+ORDER BY s.Reg_No;
+
+-- View marks and grades for each student per course
+
+CREATE OR REPLACE VIEW VIEWMarks_Grades AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    s.Status,
+    cu.Course_code,
+    fr.CA_Marks,
+    fr.End_Marks,
+    fr.Total_Marks,
+    g.Grade,
+    g.Grade_Point
+FROM Student s
+JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
+JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
+JOIN Grade g ON fr.Grade_ID = g.Grade_ID
+ORDER BY s.Reg_No;
+
+-- View SGPA and CGPA for each student per course
+
+CREATE OR REPLACE VIEW VIEWSGPA_CGPA AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    s.Status,
+    cu.Course_code,
+    g.Grade,
+    g.Grade_Point,
+    fr.Sgpa,
+    fr.Cgpa
+FROM Student s
+JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
+JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
+JOIN Grade g ON fr.Grade_ID = g.Grade_ID
+ORDER BY s.Reg_No;
