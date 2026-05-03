@@ -1,4 +1,3 @@
-
 -- USERS
 CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'admin123';
 CREATE USER 'dean_user'@'localhost' IDENTIFIED BY 'dean123';

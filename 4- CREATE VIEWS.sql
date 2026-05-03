@@ -1,5 +1,3 @@
-USE Group18_DB;
-
 -- view Attendance whole batch 
 
 CREATE OR REPLACE VIEW VIEWAttendance_Batch AS
