@@ -1,5 +1,5 @@
--- view Attendance whole batch 
 
+-- view Attendance whole batch 
 CREATE OR REPLACE VIEW VIEWAttendance_Batch AS
 SELECT 
     s.Reg_No,
@@ -23,8 +23,8 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
--- view Attendance by course 
 
+-- view Attendance by course 
 CREATE OR REPLACE VIEW VIEWAttendance_By_Course AS
 SELECT 
     cu.Course_code,
@@ -40,7 +40,6 @@ ORDER BY cu.Course_code;
 
 
 -- view Attendance by Theory
-
 CREATE OR REPLACE VIEW VIEWAttendance_Theory AS
 SELECT 
     s.Reg_No,
@@ -53,8 +52,8 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 WHERE a.session = 'Theory';
 
--- view Attendance by practical
 
+-- view Attendance by practical
 CREATE OR REPLACE VIEW VIEWAttendance_Practical AS
 SELECT 
     s.Reg_No,
@@ -67,8 +66,8 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 WHERE a.session = 'Practical';
 
--- view Attendance by Theory and Practical
 
+-- view Attendance by Theory and Practical
 CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
 SELECT 
     s.Reg_No,
@@ -85,7 +84,6 @@ ORDER BY s.Reg_No, cu.Course_code, a.Date;
 
 
 -- View  CA marks ordered by course code
-
 CREATE OR REPLACE VIEW VIEWCA_Marks_By_Course AS
 SELECT 
     cu.Course_code,
@@ -101,8 +99,8 @@ JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY cu.Course_code;
 
--- View CA marks ordered by student registration number
 
+-- View CA marks ordered by student registration number
 CREATE OR REPLACE VIEW VIEWCA_Marks_Individual AS
 SELECT 
     s.Reg_No,
@@ -119,40 +117,8 @@ JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY s.Reg_No;
 
--- View CA marks ordered by student and course code
-
-CREATE OR REPLACE VIEW VIEWCA_Marks_Course_Student AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    at.Asses_Name,
-    m.Marks,
-    m.Medi_Status
-FROM Student s
-JOIN Marks m ON s.Student_ID = m.Student_ID
-JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
-JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
-ORDER BY s.Reg_No, cu.Course_code;
-
--- View average CA marks summary for each student per course
-
-CREATE OR REPLACE VIEW VIEWCA_Summary_Student AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    ROUND(AVG(m.Marks), 2) AS Average_CA_Marks
-FROM Student s
-JOIN Marks m ON s.Student_ID = m.Student_ID
-JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
-JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
-GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
 -- View eligibility status for each student individually
-
 CREATE OR REPLACE VIEW VIEWEligibility_Individual AS
 SELECT 
     s.Reg_No,
@@ -166,8 +132,8 @@ JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 ORDER BY s.Reg_No;
 
--- View eligibility status for all students in whole batch
 
+-- View eligibility status for all students in whole batch
 CREATE OR REPLACE VIEW VIEWEligibility_Batch AS
 SELECT 
     s.Reg_No,
@@ -181,8 +147,8 @@ JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 ORDER BY s.Reg_No;
 
--- View marks and grades for each student per course
 
+-- View marks and grades for each student per course
 CREATE OR REPLACE VIEW VIEWMarks_Grades AS
 SELECT 
     s.Reg_No,
@@ -200,8 +166,8 @@ JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 JOIN Grade g ON fr.Grade_ID = g.Grade_ID
 ORDER BY s.Reg_No;
 
--- View SGPA and CGPA for each student per course
 
+-- View SGPA and CGPA for each student per course
 CREATE OR REPLACE VIEW VIEWSGPA_CGPA AS
 SELECT 
     s.Reg_No,
