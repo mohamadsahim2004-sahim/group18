@@ -78,7 +78,7 @@ INSERT INTO Course_Unit (Course_ID, Course_code, Credit, Type, Semester, Level, 
 (9, 'TCS1212', 2, 'Theory', 2, 1, 2, 6);
 
 
---8. entrollment
+-- 8. entrollment
 INSERT INTO Enrollment 
 (Entro_ID, Student_ID, Course_ID, Aced_Year, Semester, Status, Entro_Date)
 VALUES
@@ -626,7 +626,7 @@ VALUES
 (350, '2024-04-15', 82, 'Normal', 16, 5, 2),
 (351, '2024-05-20', 78, 'Normal', 16, 5, 3),
 (352, '2024-07-10', 85, 'Normal', 16, 5, 5),
---insert marks for course 6,7,8,9  for all 16 students
+-- insert marks for course 6,7,8,9  for all 16 students
 (353,'2024-04-10',77,'Normal',1,6,1),
 (354,'2024-04-15',79,'Normal',1,6,2),
 (355,'2024-05-20',74,'Normal',1,6,4),
@@ -884,7 +884,7 @@ VALUES
 (607,'2024-05-20',72,'Normal',16,9,3),
 (608,'2024-07-10',80,'Normal',16,9,5);
 
---10. student phone
+-- 10. student phone
 INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
 (1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
 (2, '0772345678'),
@@ -1989,7 +1989,7 @@ VALUES
 -- 12. Final Result
 INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID, Sgpa, Cgpa, Eligibility_Status, Student_ID, course_ID) VALUES 
 
---0nly for course 1
+-- 0nly for course 1
 -- High Achievers
 (1, 38.50, 52.00, 90.50, 1, 4.00, 3.85, 'Eligible', 1, 1),
 (2, 35.00, 50.00, 85.00, 1, 4.00, 3.70, 'Eligible', 2, 1),
@@ -2008,7 +2008,7 @@ INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID,
 (15, 33.00, 47.00, 80.00, 2, 3.70, 3.80, 'Eligible', 15, 1),
 (16, 20.00, 30.00, 50.00, 8, 1.70, 2.15, 'Suspended', 16, 1),
 
---course 2 - 9 for all 16 students
+-- course 2 - 9 for all 16 students
 (17,38.5,38.5,77,2,4.0,3.85,'Eligible',1,2),
 (18,40.0,40.0,80,2,4.0,3.85,'Eligible',1,3),
 (19,36.5,36.5,73,3,3.7,3.85,'Eligible',1,4),
