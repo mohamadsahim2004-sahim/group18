@@ -145,7 +145,7 @@ SELECT
 FROM Student s
 JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
-ORDER BY s.Reg_No;
+ORDER BY cu.course_code;
 
 
 -- View marks and grades for each student per course

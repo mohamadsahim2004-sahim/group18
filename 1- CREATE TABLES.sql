@@ -30,19 +30,42 @@ CREATE TABLE Grade (
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
---  4. Lecturer
+--  4.User
+CREATE TABLE User(
+    User_ID int PRIMARY KEY,
+    User_Name varchar(100),
+    Email varchar(100),
+    Role varchar(100),
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);
+
+--  5. Lecturer
 CREATE TABLE Lecturer (
     Lecturer_ID INT PRIMARY KEY,
     Full_name VARCHAR(100),
     Email VARCHAR(100),
+    Phone varchar(15),
     Designation VARCHAR(50),
     Dept_ID INT,
+    User_ID INT,
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID)
+    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID),
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+    UNIQUE (User_ID)
 );
 
---  5. Student
+-- 6. lecturer phone
+CREATE TABLE Lecturer_Phone(
+    Lecturer_ID INT,
+    Phone VARCHAR(15),
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_AT DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (Lecturer_ID) REFERENCES Lecturer(Lecturer_ID)
+);
+
+--  7. Student
 CREATE TABLE Student (
     Student_ID INT PRIMARY KEY,
     Full_name VARCHAR(100),
@@ -53,24 +76,40 @@ CREATE TABLE Student (
     Status VARCHAR(20),
     Intake_Year YEAR,
     Dept_ID INT,
+    User_ID INT,
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID)
+    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID),
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+    UNIQUE (User_ID)
 );
 
---  6. Technical Officer
+--  8. Student Phone
+CREATE TABLE Student_Phone (
+    Student_ID INT,
+    Phone VARCHAR(15),
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (Student_ID, Phone),
+    FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID)
+);
+
+--  9. Technical Officer
 CREATE TABLE Tech_Officer (
     To_ID INT PRIMARY KEY,
     Email VARCHAR(100),
     Full_Name VARCHAR(100),
     Assign_Lab VARCHAR(50),
     Dept_ID INT,
+    User_ID INT,
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID)
+    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID),
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+    UNIQUE (User_ID)
 );
 
---  7. Course Unit
+--  10. Course Unit
 CREATE TABLE Course_Unit (
     Course_ID INT PRIMARY KEY,
     Course_code VARCHAR(10) UNIQUE,
@@ -86,7 +125,7 @@ CREATE TABLE Course_Unit (
     FOREIGN KEY (Lecturer_ID) REFERENCES Lecturer(Lecturer_ID)
 );
 
---  8. Enrollment
+--  11. Enrollment
 CREATE TABLE Enrollment (
     Entro_ID INT PRIMARY KEY,
     Student_ID INT,
@@ -101,7 +140,7 @@ CREATE TABLE Enrollment (
     FOREIGN KEY (Course_ID) REFERENCES Course_Unit(Course_ID)
 );
 
---  9. Marks
+--  12. Marks
 CREATE TABLE Marks (
     Marks_id INT PRIMARY KEY,
     Exam_Date DATE,
@@ -117,17 +156,8 @@ CREATE TABLE Marks (
     FOREIGN KEY (Asses_ID) REFERENCES Assesment_Type(Asses_ID)
 );
 
---  10. Student Phone
-CREATE TABLE Student_Phone (
-    Student_ID INT,
-    Phone VARCHAR(15),
-    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (Student_ID, Phone),
-    FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID)
-);
 
---  11. Attendance
+--  13. Attendance
 CREATE TABLE Attendance (
     Atten_ID INT PRIMARY KEY,
     session VARCHAR(50),
@@ -144,7 +174,7 @@ CREATE TABLE Attendance (
     FOREIGN KEY (To_id) REFERENCES Tech_Officer(To_ID)
 );
 
---  12. Final Result
+--  14. Final Result
 CREATE TABLE Final_Result (
     Result_ID INT PRIMARY KEY,
     CA_Marks DECIMAL(5,2),
@@ -162,3 +192,4 @@ CREATE TABLE Final_Result (
     FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
     FOREIGN KEY (course_ID) REFERENCES Course_Unit(Course_ID)
 );
+

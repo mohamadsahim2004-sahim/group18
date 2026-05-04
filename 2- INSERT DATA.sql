@@ -29,43 +29,89 @@ INSERT INTO Grade (Grade_ID, Grade, Min_Marks, Max_Marks, Grade_Point) VALUES
 (10, 'D',  35,  39, 1.30),
 (11, 'E',   0,  34, 0.00);
 
--- 4. Lecturer
-INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Designation, Dept_ID) VALUES
-(1,  'Prof. Subash Jayasinghe',   'subash@ictec.ruh.ac.lk',       'Professor',        1),
-(2,  'Ms. Piyumi Wijerathna',     'piyumi@ictec.ruh.ac.lk',       'Lecturer',         1),
-(3,  'Dr. Dinithi Vithanage',     'dinithi@ictec.ruh.ac.lk',      'Senior Lecturer',  2),
-(4,  'Ms. Rumeshika W.arachi',    'rumeshika@ictec.ruh.ac.lk',    'Lecturer',         3),
-(5,  'Ms. Chanduni Fernando',     'chanduni.f@ruh.ac.lk',         'Lecturer',         3),
-(6,  'Mr. Shashitha Lakal',       'shashithal@ictec.ruh.ac.lk',   'Lecturer',         2);
+-- 4. User 
+INSERT INTO User (User_ID, User_Name, Email, Role) VALUES
+-- Users for Lecturers (ID 1-6)
+(1, 'subash_j', 'subash@ictec.ruh.ac.lk', 'Lecturer'),
+(2, 'piyumi_w', 'piyumi@ictec.ruh.ac.lk', 'Lecturer'),
+(3, 'dinithi_v', 'dinithi@ictec.ruh.ac.lk', 'Lecturer'),
+(4, 'rumeshika_w', 'rumeshika@ictec.ruh.ac.lk', 'Lecturer'),
+(5, 'chanduni_f', 'chanduni.f@ruh.ac.lk', 'Lecturer'),
+(6, 'shashitha_l', 'shashithal@ictec.ruh.ac.lk', 'Lecturer'),
+-- Users for Students (ID 7-22)
+(7, 'heshan_b', 'hesh@gmail.com', 'Student'),
+(8, 'fathima_r', 'riya@gmail.com', 'Student'),
+(9, 'kumar_m', 'kumar@gmail.com', 'Student'),
+(10, 'nimal_p', 'nimal@gmail.com', 'Student'),
+(11, 'imran_k', 'imran@gmail.com', 'Student'),
+(12, 'nishan_s', 'nishan@gmail.com', 'Student'),
+(13, 'saman_p', 'saman@gmail.com', 'Student'),
+(14, 'kavindi_f', 'kavindi@gmail.com', 'Student'),
+(15, 'rashmi_j', 'rashmi@gmail.com', 'Student'),
+(16, 'kaviya_r', 'kaviya@gmail.com', 'Student'),
+(17, 'ruwan_s', 'ruwan@gmail.com', 'Student'),
+(18, 'kasun_p', 'kasun@gmail.com', 'Student'),
+(19, 'nadeesha_f', 'nadeesha@gmail.com', 'Student'),
+(20, 'supun_d', 'supun@gmail.com', 'Student'),
+(21, 'isuru_m', 'isuru@gmail.com', 'Student'),
+(22, 'samank_k', 'samank@gmail.com', 'Student'),
+-- Users for Tech Officers (ID 23-27)
+(23, 'to_nimal', 'to1@ruh.ac.lk', 'Tech_Officer'),
+(24, 'to_tharindu', 'to2@ruh.ac.lk', 'Tech_Officer'),
+(25, 'to_sachini', 'to3@ruh.ac.lk', 'Tech_Officer'),
+(26, 'to_heshan', 'to4@ruh.ac.lk', 'Tech_Officer'),
+(27, 'to_lamal', 'to5@ruh.ac.lk', 'Tech_Officer');
 
--- 5. Student
-INSERT INTO Student (Student_ID, Full_name, DOB, Email, Reg_No, Address, Status, Intake_Year, Dept_ID) VALUES
-(1, 'Heshan Bandara', '2004-05-10', 'hesh@gmail.com', 'tg20242076', 'Colombo', 'Proper', 2024, 1),
-(2, 'Fathima Riya', '2003-07-21', 'riya@gmail.com', 'tg20242077', 'Galle', 'Proper', 2024, 1),
-(3, 'kumar Mohan', '2002-11-15', 'kumar@gmail.com', 'tg20242078', 'Matara', 'Proper', 2024, 1),
-(4, 'Nimal Perera', '2004-02-18', 'nimal@gmail.com', 'tg20242079', 'Hambantota', 'Proper', 2024, 1),
-(5, 'Imran Khan', '2003-09-09', 'imran@gmail.com', 'tg20242080', 'Kalutara', 'Proper', 2024, 1),
-(6, 'Nishan Silva', '2003-06-12', 'nishan@gmail.com', 'tg20242081', 'Colombo', 'Proper', 2024, 1),
-(7, 'Saman Peris', '2004-03-30', 'saman@gmail.com', 'tg20242082', 'Galle', 'Proper', 2024, 1),
-(8, 'Kavindi Fernando', '2003-08-11', 'kavindi@gmail.com', 'tg20242083', 'Matara', 'Proper', 2024, 1),
-(9, 'Rashmi Jayathilaka', '2003-01-25', 'rashmi@gmail.com', 'tg20242084', 'Colombo', 'Proper', 2024, 1),
-(10, 'Kaviya Rajesh', '2004-12-05', 'kaviya@gmail.com', 'tg20242085', 'Gampaha', 'Proper', 2024, 1),
-(11, 'Ruwan Silva', '2002-04-14', 'ruwan@gmail.com', 'tg20232086', 'Colombo', 'Repeat', 2023, 1),
-(12, 'Kasun Perera', '2002-07-19', 'kasun@gmail.com', 'tg20232087', 'Galle', 'Repeat', 2023, 1),
-(13, 'Nadeesha Fernando', '2002-10-10', 'nadeesha@gmail.com', 'tg20232088', 'Matara', 'Repeat', 2023, 1),
-(14, 'Supun Dilshan', '2002-01-01', 'supun@gmail.com',  'tg20232089', 'Rathnapura', 'Repeat', 2023, 1),
-(15, 'Isuru Madushan', '2002-06-22', 'isuru@gmail.com',  'tg20232090','Vavuniya' ,'Repeat', 2023, 1),
-(16, 'Saman Kumara', '2003-05-05', 'samank@gmail.com', 'tg20232091', 'Colombo', 'Suspended', 2023, 1);
 
--- 6. Tech Officer
-INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID) VALUES
-(1, 'to1@ruh.ac.lk', 'Nimal Perera',         'Lab A', 1),
-(2, 'to2@ruh.ac.lk', 'Tharindu Jayasinghe',  'Lab B', 1),
-(3, 'to3@ruh.ac.lk', 'Sachini Peris',        'Lab C', 2),
-(4, 'to4@ruh.ac.lk', 'Heshan Silva',         'Lab D', 3),
-(5, 'to5@ruh.ac.lk', 'Lamal Fernando',       'Lab E', 2);
+-- 5. Lecturer
+INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Phone, Designation, Dept_ID, User_ID) VALUES
+(1, 'Prof. Subash Jayasinghe', 'subash@ictec.ruh.ac.lk', '0711234567', 'Professor', 1, 1),
+(2, 'Ms. Piyumi Wijerathna', 'piyumi@ictec.ruh.ac.lk', '0712234567', 'Lecturer', 1, 2),
+(3, 'Dr. Dinithi Vithanage', 'dinithi@ictec.ruh.ac.lk', '0713234567', 'Senior Lecturer', 2, 3),
+(4, 'Ms. Rumeshika W.arachi', 'rumeshika@ictec.ruh.ac.lk', '0714234567', 'Lecturer', 3, 4),
+(5, 'Ms. Chanduni Fernando', 'chanduni.f@ruh.ac.lk', '0715234567', 'Lecturer', 3, 5),
+(6, 'Mr. Shashitha Lakal', 'shashithal@ictec.ruh.ac.lk', '0716234567', 'Lecturer', 2, 6);
 
--- 7. Course Unit
+-- 6. Lecturer Phone
+INSERT INTO Lecturer_Phone (Lecturer_ID, Phone) VALUES
+(1, '0711234567'),
+(2, '0712234567'),
+(3, '0773344556'),
+(4, '0704455667'),
+(5, '0715566778'),
+(6, '0766677889');
+
+
+-- 7. Student
+INSERT INTO Student (Student_ID, Full_name, DOB, Email, Reg_No, Address, Status, Intake_Year, Dept_ID, User_ID) VALUES
+(1, 'Heshan Bandara', '2004-05-10', 'hesh@gmail.com', 'tg20242076', 'Colombo', 'Proper', 2024, 1, 7),
+(2, 'Fathima Riya', '2003-07-21', 'riya@gmail.com', 'tg20242077', 'Galle', 'Proper', 2024, 1, 8),
+(3, 'kumar Mohan', '2002-11-15', 'kumar@gmail.com', 'tg20242078', 'Matara', 'Proper', 2024, 1, 9),
+(4, 'Nimal Perera', '2004-02-18', 'nimal@gmail.com', 'tg20242079', 'Hambantota', 'Proper', 2024, 1, 10),
+(5, 'Imran Khan', '2003-09-09', 'imran@gmail.com', 'tg20242080', 'Kalutara', 'Proper', 2024, 1, 11),
+(6, 'Nishan Silva', '2003-06-12', 'nishan@gmail.com', 'tg20242081', 'Colombo', 'Proper', 2024, 1, 12),
+(7, 'Saman Peris', '2004-03-30', 'saman@gmail.com', 'tg20242082', 'Galle', 'Proper', 2024, 1, 13),
+(8, 'Kavindi Fernando', '2003-08-11', 'kavindi@gmail.com', 'tg20242083', 'Matara', 'Proper', 2024, 1, 14),
+(9, 'Rashmi Jayathilaka', '2003-01-25', 'rashmi@gmail.com', 'tg20242084', 'Colombo', 'Proper', 2024, 1, 15),
+(10, 'Kaviya Rajesh', '2004-12-05', 'kaviya@gmail.com', 'tg20242085', 'Gampaha', 'Proper', 2024, 1, 16),
+(11, 'Ruwan Silva', '2002-04-14', 'ruwan@gmail.com', 'tg20232086', 'Colombo', 'Repeat', 2023, 1, 17),
+(12, 'Kasun Perera', '2002-07-19', 'kasun@gmail.com', 'tg20232087', 'Galle', 'Repeat', 2023, 1, 18),
+(13, 'Nadeesha Fernando', '2002-10-10', 'nadeesha@gmail.com', 'tg20232088', 'Matara', 'Repeat', 2023, 1, 19),
+(14, 'Supun Dilshan', '2002-01-01', 'supun@gmail.com',  'tg20232089', 'Rathnapura', 'Repeat', 2023, 1, 20),
+(15, 'Isuru Madushan', '2002-06-22', 'isuru@gmail.com',  'tg20232090','Vavuniya' ,'Repeat', 2023, 1, 21),
+(16, 'Saman Kumara', '2003-05-05', 'samank@gmail.com', 'tg20232091', 'Colombo', 'Suspended', 2023, 1, 22);
+
+-- 8. Tech Officer
+INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID, User_ID) VALUES
+(1, 'to1@ruh.ac.lk', 'Nimal Perera',         'Lab A', 1, 23),
+(2, 'to2@ruh.ac.lk', 'Tharindu Jayasinghe',  'Lab B', 1, 24),
+(3, 'to3@ruh.ac.lk', 'Sachini Peris',        'Lab C', 2, 25),
+(4, 'to4@ruh.ac.lk', 'Heshan Silva',         'Lab D', 3, 26),
+(5, 'to5@ruh.ac.lk', 'Lamal Fernando',       'Lab E', 2, 27);
+
+
+
+-- 9. Course Unit
 INSERT INTO Course_Unit (Course_ID, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID) VALUES
 (1, 'ICT1222', 2, 'Practical', 2, 1, 1, 1),
 (2, 'ICT1212', 2, 'Theory', 2, 1, 1, 2),
@@ -78,7 +124,7 @@ INSERT INTO Course_Unit (Course_ID, Course_code, Credit, Type, Semester, Level, 
 (9, 'TCS1212', 2, 'Theory', 2, 1, 2, 6);
 
 
--- 8. entrollment
+-- 10. entrollment
 INSERT INTO Enrollment 
 (Entro_ID, Student_ID, Course_ID, Aced_Year, Semester, Status, Entro_Date)
 VALUES
@@ -227,7 +273,7 @@ VALUES
 (143, 16, 8, 2024, 2, 'Active', '2024-03-01'),
 (144, 16, 9, 2024, 2, 'Active', '2024-03-01');
 
--- 9. Marks
+-- 11. Marks
 INSERT INTO Marks 
 (Marks_id, Exam_Date, Marks, Medi_Status, Student_ID, Course_ID, Asses_ID)
 VALUES
@@ -884,7 +930,7 @@ VALUES
 (607,'2024-05-20',72,'Normal',16,9,3),
 (608,'2024-07-10',80,'Normal',16,9,5);
 
--- 10. student phone
+-- 12. student phone
 INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
 (1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
 (2, '0772345678'),
@@ -904,7 +950,7 @@ INSERT INTO Student_Phone (Student_ID, Phone) VALUES
 (16, '0710001111');
 
 
--- 11. Attendance (Consolidated and Fixed)
+-- 13. Attendance (Consolidated and Fixed)
 INSERT INTO Attendance 
 (Atten_ID, session, Status, Date, Result, Student_ID, Course_ID, To_id)
 VALUES
@@ -1986,7 +2032,7 @@ VALUES
 
 
 
--- 12. Final Result
+-- 14. Final Result
 INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID, Sgpa, Cgpa, Eligibility_Status, Student_ID, course_ID) VALUES 
 
 -- 0nly for course 1
