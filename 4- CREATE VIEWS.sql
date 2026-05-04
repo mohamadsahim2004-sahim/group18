@@ -1,14 +1,29 @@
 USE Group18_DB;
 
--- view Attendance whole batch 
+-- Batch Attendance Summary
 
 CREATE OR REPLACE VIEW VIEWAttendance_Batch AS
+SELECT 
+    s.Reg_No,
+    cu.Course_code,
+    a.session,
+    a.Date,
+    a.Status,
+    a.Result AS Medical_Status
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+ORDER BY cu.Course_code;
+
+--  Student Individual Summary
+
+CREATE OR REPLACE VIEW VIEWAttendance_Individual_Summary AS
 SELECT 
     s.Reg_No,
     s.Full_name,
     cu.Course_code,
     COUNT(a.Atten_ID) AS Total_Sessions,
-    SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS Present_Count,
+    SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS Total_Attendance,
     ROUND(
         (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
         COUNT(a.Atten_ID)) * 100, 2
@@ -25,7 +40,118 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
--- view Attendance by course 
+-- Theory Attendance
+
+CREATE OR REPLACE VIEW VIEWAttendance_Theory AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    a.session AS Session_Type,
+    ROUND(
+        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+        COUNT(a.Atten_ID)) * 100, 2
+    ) AS Theory_Attendance_Percentage,
+    CASE 
+        WHEN ROUND(
+            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+            COUNT(a.Atten_ID)) * 100, 2
+        ) >= 80 THEN 'Eligible'
+        ELSE 'Not Eligible'
+    END AS Theory_Eligibility
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+WHERE a.session = 'Theory'
+GROUP BY s.Reg_No, s.Full_name, cu.Course_code, a.session;
+
+--  Practical Attendance
+
+CREATE OR REPLACE VIEW VIEWAttendance_Practical AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    a.session AS Session_Type,
+    ROUND(
+        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+        COUNT(a.Atten_ID)) * 100, 2
+    ) AS Practical_Attendance_Percentage,
+    CASE 
+        WHEN ROUND(
+            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
+            COUNT(a.Atten_ID)) * 100, 2
+        ) >= 80 THEN 'Eligible'
+        ELSE 'Not Eligible'
+    END AS Practical_Eligibility
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+WHERE a.session = 'Practical'
+GROUP BY s.Reg_No, s.Full_name, cu.Course_code, a.session;
+
+-- Theory and Practical Attendance Combined
+
+CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    ROUND(
+        (SUM(CASE WHEN a.session = 'Theory' AND a.Status = 'Present' THEN 1 ELSE 0 END) /
+        NULLIF(SUM(CASE WHEN a.session = 'Theory' THEN 1 ELSE 0 END), 0)) * 100, 2
+    ) AS Theory_Attendance,
+    ROUND(
+        (SUM(CASE WHEN a.session = 'Practical' AND a.Status = 'Present' THEN 1 ELSE 0 END) /
+        NULLIF(SUM(CASE WHEN a.session = 'Practical' THEN 1 ELSE 0 END), 0)) * 100, 2
+    ) AS Practical_Attendance,
+    ROUND(
+        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) /
+        COUNT(a.Atten_ID)) * 100, 2
+    ) AS Combined_Attendance,
+    CASE 
+        WHEN ROUND(
+            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) /
+            COUNT(a.Atten_ID)) * 100, 2
+        ) >= 80 THEN 'Eligible'
+        ELSE 'Not Eligible'
+    END AS Final_Eligibility
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
+
+-- Attendance & CA Eligibility
+
+CREATE OR REPLACE VIEW VIEWEligibility_Batch AS
+SELECT 
+    s.Reg_No,
+    cu.Course_code,
+    ROUND(
+        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) /
+        COUNT(a.Atten_ID)) * 100, 2
+    ) AS Attendance_Percentage,
+    fr.CA_Marks AS Total_CA_Marks,
+    fr.Eligibility_Status,
+    CASE 
+        WHEN fr.CA_Marks >= 40 THEN 'CA Eligible'
+        ELSE 'CA Not Eligible'
+    END AS CA_Eligibility_Status,
+    CASE 
+        WHEN ROUND(
+            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) /
+            COUNT(a.Atten_ID)) * 100, 2
+        ) >= 80 AND fr.CA_Marks >= 40 THEN 'Final Eligible'
+        ELSE 'Final Not Eligible'
+    END AS Final_Eligibility_Status
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
+    AND cu.Course_ID = fr.course_ID
+GROUP BY s.Reg_No, cu.Course_code, fr.CA_Marks, fr.Eligibility_Status;
+
+-- view Attendance by course
 
 CREATE OR REPLACE VIEW VIEWAttendance_By_Course AS
 SELECT 
@@ -40,22 +166,7 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 ORDER BY cu.Course_code;
 
--- view Attendance by Student
-
-CREATE OR REPLACE VIEW VIEWAttendance_By_Student AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.Date,
-    a.session,
-    a.Status
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-ORDER BY s.Reg_No;
-
--- view Attendance summary  by course unit
+-- view Attendance summary by course unit
 
 CREATE OR REPLACE VIEW VIEWAttendance_All_Courses AS
 SELECT 
@@ -66,8 +177,9 @@ FROM Course_Unit cu
 JOIN Attendance a ON cu.Course_ID = a.Course_ID
 GROUP BY cu.Course_code;
 
--- view Attendance by Student and course
 
+
+-- view Attendance by Student and course
 CREATE OR REPLACE VIEW VIEWAttendance_Student_Course AS
 SELECT 
     s.Reg_No,
@@ -81,68 +193,7 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 ORDER BY s.Reg_No, cu.Course_code;
 
--- view Attendance by Theory
-
-CREATE OR REPLACE VIEW VIEWAttendance_Theory AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.Date,
-    a.Status
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-WHERE a.session = 'Theory';
-
--- view Attendance by practical
-
-CREATE OR REPLACE VIEW VIEWAttendance_Practical AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.Date,
-    a.Status
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-WHERE a.session = 'Practical';
-
--- view Attendance by Theory and Practical
-
-CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.session,
-    a.Date,
-    a.Status
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-WHERE a.session IN ('Theory', 'Practical')
-ORDER BY s.Reg_No, cu.Course_code, a.Date;
-
--- View  CA marks for all students and all courses
-
-CREATE OR REPLACE VIEW VIEWCA_Marks_Batch AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    at.Asses_Name,
-    m.Marks,
-    m.Medi_Status,
-    m.Exam_Date
-FROM Student s
-JOIN Marks m ON s.Student_ID = m.Student_ID
-JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
-JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical');
-
--- View  CA marks ordered by course code
+-- View CA marks ordered by course code
 
 CREATE OR REPLACE VIEW VIEWCA_Marks_By_Course AS
 SELECT 
@@ -158,6 +209,23 @@ JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
 JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY cu.Course_code;
+
+-- View CA marks for all students and all courses
+
+CREATE OR REPLACE VIEW VIEWCA_Marks_Batch AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    at.Asses_Name,
+    m.Marks,
+    m.Medi_Status,
+    m.Exam_Date
+FROM Student s
+JOIN Marks m ON s.Student_ID = m.Student_ID
+JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
+JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical');
 
 -- View CA marks ordered by student registration number
 
@@ -178,7 +246,6 @@ WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY s.Reg_No;
 
 -- View CA marks ordered by student and course code
-
 CREATE OR REPLACE VIEW VIEWCA_Marks_Course_Student AS
 SELECT 
     s.Reg_No,
@@ -195,7 +262,6 @@ WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 ORDER BY s.Reg_No, cu.Course_code;
 
 -- View average CA marks summary for each student per course
-
 CREATE OR REPLACE VIEW VIEWCA_Summary_Student AS
 SELECT 
     s.Reg_No,
@@ -224,23 +290,7 @@ JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 ORDER BY s.Reg_No;
 
--- View eligibility status for all students in whole batch
-
-CREATE OR REPLACE VIEW VIEWEligibility_Batch AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    s.Status AS Student_Status,
-    cu.Course_code,
-    fr.CA_Marks,
-    fr.Eligibility_Status
-FROM Student s
-JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
-JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
-ORDER BY s.Reg_No;
-
 -- View marks and grades for each student per course
-
 CREATE OR REPLACE VIEW VIEWMarks_Grades AS
 SELECT 
     s.Reg_No,
