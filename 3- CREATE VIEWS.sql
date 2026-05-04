@@ -1,4 +1,3 @@
-USE Group18_DB;
 
 -- Batch Attendance Summary
 
@@ -204,11 +203,25 @@ SELECT
     m.Marks,
     m.Medi_Status
 FROM Student s
-JOIN Marks m ON s.Student_ID = m.Student_ID
-JOIN Course_Unit cu ON m.Course_ID = cu.Course_ID
-JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
-WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
-ORDER BY cu.Course_code;
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+WHERE a.session = 'Practical';
+
+-- view Attendance by Theory and Practical
+
+CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
+SELECT 
+    s.Reg_No,
+    s.Full_name,
+    cu.Course_code,
+    a.session,
+    a.Date,
+    a.Status
+FROM Student s
+JOIN Attendance a ON s.Student_ID = a.Student_ID
+JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
+WHERE a.session IN ('Theory', 'Practical')
+ORDER BY s.Reg_No, cu.Course_code, a.Date;
 
 -- View CA marks for all students and all courses
 
@@ -228,7 +241,6 @@ JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
 WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical');
 
 -- View CA marks ordered by student registration number
-
 CREATE OR REPLACE VIEW VIEWCA_Marks_Individual AS
 SELECT 
     s.Reg_No,
@@ -276,7 +288,6 @@ WHERE at.Asses_Name NOT IN ('Final Theory', 'Final Practical')
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
 -- View eligibility status for each student individually
-
 CREATE OR REPLACE VIEW VIEWEligibility_Individual AS
 SELECT 
     s.Reg_No,
@@ -288,7 +299,8 @@ SELECT
 FROM Student s
 JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
-ORDER BY s.Reg_No;
+ORDER BY cu.course_code;
+
 
 -- View marks and grades for each student per course
 CREATE OR REPLACE VIEW VIEWMarks_Grades AS
@@ -308,8 +320,8 @@ JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 JOIN Grade g ON fr.Grade_ID = g.Grade_ID
 ORDER BY s.Reg_No;
 
--- View SGPA and CGPA for each student per course
 
+-- View SGPA and CGPA for each student per course
 CREATE OR REPLACE VIEW VIEWSGPA_CGPA AS
 SELECT 
     s.Reg_No,
@@ -325,3 +337,46 @@ JOIN Final_Result fr ON s.Student_ID = fr.Student_ID
 JOIN Course_Unit cu ON fr.course_ID = cu.Course_ID
 JOIN Grade g ON fr.Grade_ID = g.Grade_ID
 ORDER BY s.Reg_No;
+
+
+-- Final Eligiblity view
+CREATE VIEW v_Final_Eligibility AS
+WITH AttendanceCalc AS (
+    -- Calculate Attendance Percentage (Assuming 15 sessions total)
+    -- Treats 'Status' as 'Present' or 'Medical' as valid attendance
+    SELECT 
+        Student_ID, 
+        Course_ID,
+        (COUNT(CASE WHEN Status IN ('Present', 'Medical') THEN 1 END) * 100.0 / 15) AS Atten_Percentage
+    FROM Attendance
+    GROUP BY Student_ID, Course_ID
+),
+CACalc AS (
+    -- Calculate Total CA Marks based on Assessment Weights
+    SELECT 
+        m.Student_ID, 
+        m.Course_ID,
+        SUM(m.Marks * (at.weight_percentage / 100.0)) AS Total_CA_Marks
+    FROM Marks m
+    JOIN Assesment_Type at ON m.Asses_ID = at.Asses_ID
+    GROUP BY m.Student_ID, m.Course_ID
+)
+SELECT 
+    s.Reg_No,
+    c.Course_code,
+    ROUND(ac.Atten_Percentage, 2) AS Attendance_Percentage,
+    ROUND(cc.Total_CA_Marks, 2) AS Total_CA_Marks,
+    
+    CASE WHEN ac.Atten_Percentage >= 80 THEN 'Eligible' ELSE 'Ineligible' END AS Attendance_Eligibility_Status,
+
+    CASE WHEN cc.Total_CA_Marks >= 40 THEN 'Eligible' ELSE 'Ineligible' END AS CA_Eligibility_Status,
+
+    CASE 
+        WHEN ac.Atten_Percentage >= 80 AND cc.Total_CA_Marks >= 40 THEN 'Eligible' 
+        ELSE 'Ineligible' 
+    END AS Final_Eligibility_Status
+
+FROM Student s
+JOIN AttendanceCalc ac ON s.Student_ID = ac.Student_ID
+JOIN CACalc cc ON s.Student_ID = cc.Student_ID AND ac.Course_ID = cc.Course_ID
+JOIN Course_Unit c ON ac.Course_ID = c.Course_ID;

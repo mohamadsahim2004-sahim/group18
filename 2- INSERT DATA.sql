@@ -1,12 +1,12 @@
-SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 0;
 
---1. department
+-- 1. Department
 INSERT INTO Department (Dept_ID, Dept_name, Lec_count, Stu_count) VALUES
 (1, 'Information and Communication Technology', 16, 320),
 (2, 'Bio Systems Technology', 11,  450),
-(3, 'Engineering Technology',19 , 750);
+(3, 'Engineering Technology', 19 , 750);
 
---2. assesment type
+-- 2. Assessment Type
 INSERT INTO Assesment_Type (Asses_ID, Asses_Name, weight_percentage) VALUES
 (1, 'Quiz',            10.00),
 (2, 'Assignment',      10.00),
@@ -15,7 +15,7 @@ INSERT INTO Assesment_Type (Asses_ID, Asses_Name, weight_percentage) VALUES
 (5, 'Final Theory',    25.00),
 (6, 'Final Practical', 25.00);
 
---3. grade
+-- 3. Grade
 INSERT INTO Grade (Grade_ID, Grade, Min_Marks, Max_Marks, Grade_Point) VALUES
 (1,  'A+', 85, 100, 4.00),
 (2,  'A',  75,  84, 4.00),
@@ -29,49 +29,90 @@ INSERT INTO Grade (Grade_ID, Grade, Min_Marks, Max_Marks, Grade_Point) VALUES
 (10, 'D',  35,  39, 1.30),
 (11, 'E',   0,  34, 0.00);
 
---4. lecturer
-INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Designation, Dept_ID) VALUES
-(1,  'Prof. Subash Jayasinghe',   'subash@ictec.ruh.ac.lk',       'Professor',        1),
-(2,  'Ms. Piyumi Wijerathna',     'piyumi@ictec.ruh.ac.lk',       'Lecturer',         1),
-(3,  'Dr. Dinithi Vithanage',     'dinithi@ictec.ruh.ac.lk',      'Senior Lecturer',  2),
-(4,  'Ms. Rumeshika W.arachi',    'rumeshika@ictec.ruh.ac.lk',    'Lecturer',         3),
-(5,  'Ms. Chanduni Fernando',     'chanduni.f@ruh.ac.lk',         'Lecturer',         3),
-(6,  'Mr. Shashitha Lakal',       'shashithal@ictec.ruh.ac.lk',   'Lecturer',         2);
+-- 4. User 
+INSERT INTO User (User_ID, User_Name, Email, Role) VALUES
+-- Users for Lecturers (ID 1-6)
+(1, 'subash_j', 'subash@ictec.ruh.ac.lk', 'Lecturer'),
+(2, 'piyumi_w', 'piyumi@ictec.ruh.ac.lk', 'Lecturer'),
+(3, 'dinithi_v', 'dinithi@ictec.ruh.ac.lk', 'Lecturer'),
+(4, 'rumeshika_w', 'rumeshika@ictec.ruh.ac.lk', 'Lecturer'),
+(5, 'chanduni_f', 'chanduni.f@ruh.ac.lk', 'Lecturer'),
+(6, 'shashitha_l', 'shashithal@ictec.ruh.ac.lk', 'Lecturer'),
+-- Users for Students (ID 7-22)
+(7, 'heshan_b', 'hesh@gmail.com', 'Student'),
+(8, 'fathima_r', 'riya@gmail.com', 'Student'),
+(9, 'kumar_m', 'kumar@gmail.com', 'Student'),
+(10, 'nimal_p', 'nimal@gmail.com', 'Student'),
+(11, 'imran_k', 'imran@gmail.com', 'Student'),
+(12, 'nishan_s', 'nishan@gmail.com', 'Student'),
+(13, 'saman_p', 'saman@gmail.com', 'Student'),
+(14, 'kavindi_f', 'kavindi@gmail.com', 'Student'),
+(15, 'rashmi_j', 'rashmi@gmail.com', 'Student'),
+(16, 'kaviya_r', 'kaviya@gmail.com', 'Student'),
+(17, 'ruwan_s', 'ruwan@gmail.com', 'Student'),
+(18, 'kasun_p', 'kasun@gmail.com', 'Student'),
+(19, 'nadeesha_f', 'nadeesha@gmail.com', 'Student'),
+(20, 'supun_d', 'supun@gmail.com', 'Student'),
+(21, 'isuru_m', 'isuru@gmail.com', 'Student'),
+(22, 'samank_k', 'samank@gmail.com', 'Student'),
+-- Users for Tech Officers (ID 23-27)
+(23, 'to_nimal', 'to1@ruh.ac.lk', 'Tech_Officer'),
+(24, 'to_tharindu', 'to2@ruh.ac.lk', 'Tech_Officer'),
+(25, 'to_sachini', 'to3@ruh.ac.lk', 'Tech_Officer'),
+(26, 'to_heshan', 'to4@ruh.ac.lk', 'Tech_Officer'),
+(27, 'to_lamal', 'to5@ruh.ac.lk', 'Tech_Officer');
 
 
---5. student
-INSERT INTO Student (Student_ID, Full_name, DOB, Email, Reg_No, Address, Status, Intake_Year, Dept_ID) VALUES
-(1, 'Heshan Bandara', '2004-05-10', 'hesh@gmail.com', 'tg20242076', 'Colombo', 'Proper', 2024, 1),
-(2, 'Fathima Riya', '2003-07-21', 'riya@gmail.com', 'tg20242077', 'Galle', 'Proper', 2024, 1),
-(3, 'kumar Mohan', '2002-11-15', 'kumar@gmail.com', 'tg20242078', 'Matara', 'Proper', 2024, 1),
-(4, 'Nimal Perera', '2004-02-18', 'nimal@gmail.com', 'tg20242079', 'Hambantota', 'Proper', 2024, 1),
-(5, 'Imran Khan', '2003-09-09', 'imran@gmail.com', 'tg20242080', 'Kalutara', 'Proper', 2024, 1),
-(6, 'Nishan Silva', '2003-06-12', 'nishan@gmail.com', 'tg20242081', 'Colombo', 'Proper', 2024, 1),
-(7, 'Saman Peris', '2004-03-30', 'saman@gmail.com', 'tg20242082', 'Galle', 'Proper', 2024, 1),
-(8, 'Kavindi Fernando', '2003-08-11', 'kavindi@gmail.com', 'tg20242083', 'Matara', 'Proper', 2024, 1),
-(9, 'Rashmi Jayathilaka', '2003-01-25', 'rashmi@gmail.com', 'tg20242084', 'Colombo', 'Proper', 2024, 1),
-(10, 'Kaviya Rajesh', '2004-12-05', 'kaviya@gmail.com', 'tg20242085', 'Gampaha', 'Proper', 2024, 1), --proper students
-(11, 'Ruwan Silva', '2002-04-14', 'ruwan@gmail.com', 'tg20232086', 'Colombo', 'Repeat', 2023, 1),
-(12, 'Kasun Perera', '2002-07-19', 'kasun@gmail.com', 'tg20232087', 'Galle', 'Repeat', 2023, 1),
-(13, 'Nadeesha Fernando', '2002-10-10', 'nadeesha@gmail.com', 'tg20232088', 'Matara', 'Repeat', 2023, 1),
-(14, 'Supun Dilshan', '2002-01-01', 'supun@gmail.com',  'tg20232089', 'Rathnapura', 'Repeat', 2023, 1),
-(15, 'Isuru Madushan', '2002-06-22', 'isuru@gmail.com',  'tg20232090','Vavuniya' ,'Repeat', 2023, 1),  --repeat students
-(16, 'Saman Kumara', '2003-05-05', 'samank@gmail.com', 'tg20232091', 'Colombo', 'Suspended', 2023, 1);  --suspended student
+-- 5. Lecturer
+INSERT INTO Lecturer (Lecturer_ID, Full_name, Email, Phone, Designation, Dept_ID, User_ID) VALUES
+(1, 'Prof. Subash Jayasinghe', 'subash@ictec.ruh.ac.lk', '0711234567', 'Professor', 1, 1),
+(2, 'Ms. Piyumi Wijerathna', 'piyumi@ictec.ruh.ac.lk', '0712234567', 'Lecturer', 1, 2),
+(3, 'Dr. Dinithi Vithanage', 'dinithi@ictec.ruh.ac.lk', '0713234567', 'Senior Lecturer', 2, 3),
+(4, 'Ms. Rumeshika W.arachi', 'rumeshika@ictec.ruh.ac.lk', '0714234567', 'Lecturer', 3, 4),
+(5, 'Ms. Chanduni Fernando', 'chanduni.f@ruh.ac.lk', '0715234567', 'Lecturer', 3, 5),
+(6, 'Mr. Shashitha Lakal', 'shashithal@ictec.ruh.ac.lk', '0716234567', 'Lecturer', 2, 6);
+
+-- 6. Lecturer Phone
+INSERT INTO Lecturer_Phone (Lecturer_ID, Phone) VALUES
+(1, '0711234567'),
+(2, '0712234567'),
+(3, '0773344556'),
+(4, '0704455667'),
+(5, '0715566778'),
+(6, '0766677889');
 
 
---6. tech officer
-INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID) VALUES
-(1, 'to1@ruh.ac.lk', 'Nimal Perera',         'Lab A', 1),
-(2, 'to2@ruh.ac.lk', 'Tharindu Jayasinghe',  'Lab B', 1),
-(3, 'to3@ruh.ac.lk', 'Sachini Peris',        'Lab C', 2),
-(4, 'to4@ruh.ac.lk', 'Heshan Silva',         'Lab D', 3),
-(5, 'to5@ruh.ac.lk', 'Lamal Fernando',       'Lab E', 2);
+-- 7. Student
+INSERT INTO Student (Student_ID, Full_name, DOB, Email, Reg_No, Address, Status, Intake_Year, Dept_ID, User_ID) VALUES
+(1, 'Heshan Bandara', '2004-05-10', 'hesh@gmail.com', 'tg20242076', 'Colombo', 'Proper', 2024, 1, 7),
+(2, 'Fathima Riya', '2003-07-21', 'riya@gmail.com', 'tg20242077', 'Galle', 'Proper', 2024, 1, 8),
+(3, 'kumar Mohan', '2002-11-15', 'kumar@gmail.com', 'tg20242078', 'Matara', 'Proper', 2024, 1, 9),
+(4, 'Nimal Perera', '2004-02-18', 'nimal@gmail.com', 'tg20242079', 'Hambantota', 'Proper', 2024, 1, 10),
+(5, 'Imran Khan', '2003-09-09', 'imran@gmail.com', 'tg20242080', 'Kalutara', 'Proper', 2024, 1, 11),
+(6, 'Nishan Silva', '2003-06-12', 'nishan@gmail.com', 'tg20242081', 'Colombo', 'Proper', 2024, 1, 12),
+(7, 'Saman Peris', '2004-03-30', 'saman@gmail.com', 'tg20242082', 'Galle', 'Proper', 2024, 1, 13),
+(8, 'Kavindi Fernando', '2003-08-11', 'kavindi@gmail.com', 'tg20242083', 'Matara', 'Proper', 2024, 1, 14),
+(9, 'Rashmi Jayathilaka', '2003-01-25', 'rashmi@gmail.com', 'tg20242084', 'Colombo', 'Proper', 2024, 1, 15),
+(10, 'Kaviya Rajesh', '2004-12-05', 'kaviya@gmail.com', 'tg20242085', 'Gampaha', 'Proper', 2024, 1, 16),
+(11, 'Ruwan Silva', '2002-04-14', 'ruwan@gmail.com', 'tg20232086', 'Colombo', 'Repeat', 2023, 1, 17),
+(12, 'Kasun Perera', '2002-07-19', 'kasun@gmail.com', 'tg20232087', 'Galle', 'Repeat', 2023, 1, 18),
+(13, 'Nadeesha Fernando', '2002-10-10', 'nadeesha@gmail.com', 'tg20232088', 'Matara', 'Repeat', 2023, 1, 19),
+(14, 'Supun Dilshan', '2002-01-01', 'supun@gmail.com',  'tg20232089', 'Rathnapura', 'Repeat', 2023, 1, 20),
+(15, 'Isuru Madushan', '2002-06-22', 'isuru@gmail.com',  'tg20232090','Vavuniya' ,'Repeat', 2023, 1, 21),
+(16, 'Saman Kumara', '2003-05-05', 'samank@gmail.com', 'tg20232091', 'Colombo', 'Suspended', 2023, 1, 22);
+
+-- 8. Tech Officer
+INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID, User_ID) VALUES
+(1, 'to1@ruh.ac.lk', 'Nimal Perera',         'Lab A', 1, 23),
+(2, 'to2@ruh.ac.lk', 'Tharindu Jayasinghe',  'Lab B', 1, 24),
+(3, 'to3@ruh.ac.lk', 'Sachini Peris',        'Lab C', 2, 25),
+(4, 'to4@ruh.ac.lk', 'Heshan Silva',         'Lab D', 3, 26),
+(5, 'to5@ruh.ac.lk', 'Lamal Fernando',       'Lab E', 2, 27);
 
 
---7.course unit
-INSERT INTO Course_Unit 
-(Course_ID, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID)
-VALUES
+
+-- 9. Course Unit
+INSERT INTO Course_Unit (Course_ID, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID) VALUES
 (1, 'ICT1222', 2, 'Practical', 2, 1, 1, 1),
 (2, 'ICT1212', 2, 'Theory', 2, 1, 1, 2),
 (3, 'ICT1232', 2, 'Theory', 2, 1, 1, 5),
@@ -83,207 +124,167 @@ VALUES
 (9, 'TCS1212', 2, 'Theory', 2, 1, 2, 6);
 
 
---8. entrollment
+-- 10. entrollment
 INSERT INTO Enrollment 
 (Entro_ID, Student_ID, Course_ID, Aced_Year, Semester, Status, Entro_Date)
 VALUES
--- (10 proper students)
-(1,  1, 1, 2024, 2, 'Active', '2024-03-01'),
-(2,  1, 2, 2024, 2, 'Active', '2024-03-01'),
-(3,  1, 3, 2024, 2, 'Active', '2024-03-01'),
-(4,  1, 4, 2024, 2, 'Active', '2024-03-01'),
-(5,  1, 5, 2024, 2, 'Active', '2024-03-01'), 
-
-(6,  2, 1, 2024, 2, 'Active', '2024-03-01'),
-(7,  2, 2, 2024, 2, 'Active', '2024-03-01'),
-(8,  2, 3, 2024, 2, 'Active', '2024-03-01'),
-(9,  2, 4, 2024, 2, 'Active', '2024-03-01'),
+(1, 1, 1, 2024, 2, 'Active', '2024-03-01'),
+(2, 1, 2, 2024, 2, 'Active', '2024-03-01'),
+(3, 1, 3, 2024, 2, 'Active', '2024-03-01'),
+(4, 1, 4, 2024, 2, 'Active', '2024-03-01'),
+(5, 1, 5, 2024, 2, 'Active', '2024-03-01'),
+(6, 2, 1, 2024, 2, 'Active', '2024-03-01'),
+(7, 2, 2, 2024, 2, 'Active', '2024-03-01'),
+(8, 2, 3, 2024, 2, 'Active', '2024-03-01'),
+(9, 2, 4, 2024, 2, 'Active', '2024-03-01'),
 (10, 2, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (11, 3, 1, 2024, 2, 'Active', '2024-03-01'),
 (12, 3, 2, 2024, 2, 'Active', '2024-03-01'),
 (13, 3, 3, 2024, 2, 'Active', '2024-03-01'),
 (14, 3, 4, 2024, 2, 'Active', '2024-03-01'),
 (15, 3, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (16, 4, 1, 2024, 2, 'Active', '2024-03-01'),
 (17, 4, 2, 2024, 2, 'Active', '2024-03-01'),
 (18, 4, 3, 2024, 2, 'Active', '2024-03-01'),
 (19, 4, 4, 2024, 2, 'Active', '2024-03-01'),
 (20, 4, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (21, 5, 1, 2024, 2, 'Active', '2024-03-01'),
 (22, 5, 2, 2024, 2, 'Active', '2024-03-01'),
 (23, 5, 3, 2024, 2, 'Active', '2024-03-01'),
 (24, 5, 4, 2024, 2, 'Active', '2024-03-01'),
 (25, 5, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (26, 6, 1, 2024, 2, 'Active', '2024-03-01'),
 (27, 6, 2, 2024, 2, 'Active', '2024-03-01'),
 (28, 6, 3, 2024, 2, 'Active', '2024-03-01'),
 (29, 6, 4, 2024, 2, 'Active', '2024-03-01'),
 (30, 6, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (31, 7, 1, 2024, 2, 'Active', '2024-03-01'),
 (32, 7, 2, 2024, 2, 'Active', '2024-03-01'),
 (33, 7, 3, 2024, 2, 'Active', '2024-03-01'),
 (34, 7, 4, 2024, 2, 'Active', '2024-03-01'),
 (35, 7, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (36, 8, 1, 2024, 2, 'Active', '2024-03-01'),
 (37, 8, 2, 2024, 2, 'Active', '2024-03-01'),
 (38, 8, 3, 2024, 2, 'Active', '2024-03-01'),
 (39, 8, 4, 2024, 2, 'Active', '2024-03-01'),
 (40, 8, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (41, 9, 1, 2024, 2, 'Active', '2024-03-01'),
 (42, 9, 2, 2024, 2, 'Active', '2024-03-01'),
 (43, 9, 3, 2024, 2, 'Active', '2024-03-01'),
 (44, 9, 4, 2024, 2, 'Active', '2024-03-01'),
 (45, 9, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (46, 10, 1, 2024, 2, 'Active', '2024-03-01'),
 (47, 10, 2, 2024, 2, 'Active', '2024-03-01'),
 (48, 10, 3, 2024, 2, 'Active', '2024-03-01'),
 (49, 10, 4, 2024, 2, 'Active', '2024-03-01'),
 (50, 10, 5, 2024, 2, 'Active', '2024-03-01'),
-
--- (5 repeat students)
 (51, 11, 1, 2024, 2, 'Active', '2024-03-01'),
 (52, 11, 2, 2024, 2, 'Active', '2024-03-01'),
 (53, 11, 3, 2024, 2, 'Active', '2024-03-01'),
 (54, 11, 4, 2024, 2, 'Active', '2024-03-01'),
 (55, 11, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (56, 12, 1, 2024, 2, 'Active', '2024-03-01'),
 (57, 12, 2, 2024, 2, 'Active', '2024-03-01'),
 (58, 12, 3, 2024, 2, 'Active', '2024-03-01'),
 (59, 12, 4, 2024, 2, 'Active', '2024-03-01'),
 (60, 12, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (61, 13, 1, 2024, 2, 'Active', '2024-03-01'),
 (62, 13, 2, 2024, 2, 'Active', '2024-03-01'),
 (63, 13, 3, 2024, 2, 'Active', '2024-03-01'),
 (64, 13, 4, 2024, 2, 'Active', '2024-03-01'),
 (65, 13, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (66, 14, 1, 2024, 2, 'Active', '2024-03-01'),
 (67, 14, 2, 2024, 2, 'Active', '2024-03-01'),
 (68, 14, 3, 2024, 2, 'Active', '2024-03-01'),
 (69, 14, 4, 2024, 2, 'Active', '2024-03-01'),
 (70, 14, 5, 2024, 2, 'Active', '2024-03-01'),
-
 (71, 15, 1, 2024, 2, 'Active', '2024-03-01'),
 (72, 15, 2, 2024, 2, 'Active', '2024-03-01'),
 (73, 15, 3, 2024, 2, 'Active', '2024-03-01'),
 (74, 15, 4, 2024, 2, 'Active', '2024-03-01'),
 (75, 15, 5, 2024, 2, 'Active', '2024-03-01'),
-
---(1 suspended student)
 (76, 16, 1, 2024, 2, 'Active', '2024-03-01'),
 (77, 16, 2, 2024, 2, 'Active', '2024-03-01'),
 (78, 16, 3, 2024, 2, 'Active', '2024-03-01'),
 (79, 16, 4, 2024, 2, 'Active', '2024-03-01'),
 (80, 16, 5, 2024, 2, 'Active', '2024-03-01'),
---student 1(course 6-9)
-(81,  1, 6, 2024, 2, 'Active', '2024-03-01'),
-(82,  1, 7, 2024, 2, 'Active', '2024-03-01'),
-(83,  1, 8, 2024, 2, 'Active', '2024-03-01'),
-(84,  1, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 2 (Courses 6-9)
-(85,  2, 6, 2024, 2, 'Active', '2024-03-01'),
-(86,  2, 7, 2024, 2, 'Active', '2024-03-01'),
-(87,  2, 8, 2024, 2, 'Active', '2024-03-01'),
-(88,  2, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 3 (Courses 6-9)
-(89,  3, 6, 2024, 2, 'Active', '2024-03-01'),
-(90,  3, 7, 2024, 2, 'Active', '2024-03-01'),
-(91,  3, 8, 2024, 2, 'Active', '2024-03-01'),
-(92,  3, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 4 (Courses 6-9)
-(93,  4, 6, 2024, 2, 'Active', '2024-03-01'),
-(94,  4, 7, 2024, 2, 'Active', '2024-03-01'),
-(95,  4, 8, 2024, 2, 'Active', '2024-03-01'),
-(96,  4, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 5 (Courses 6-9)
-(97,  5, 6, 2024, 2, 'Active', '2024-03-01'),
-(98,  5, 7, 2024, 2, 'Active', '2024-03-01'),
-(99,  5, 8, 2024, 2, 'Active', '2024-03-01'),
+(81, 1, 6, 2024, 2, 'Active', '2024-03-01'),
+(82, 1, 7, 2024, 2, 'Active', '2024-03-01'),
+(83, 1, 8, 2024, 2, 'Active', '2024-03-01'),
+(84, 1, 9, 2024, 2, 'Active', '2024-03-01'),
+(85, 2, 6, 2024, 2, 'Active', '2024-03-01'),
+(86, 2, 7, 2024, 2, 'Active', '2024-03-01'),
+(87, 2, 8, 2024, 2, 'Active', '2024-03-01'),
+(88, 2, 9, 2024, 2, 'Active', '2024-03-01'),
+(89, 3, 6, 2024, 2, 'Active', '2024-03-01'),
+(90, 3, 7, 2024, 2, 'Active', '2024-03-01'),
+(91, 3, 8, 2024, 2, 'Active', '2024-03-01'),
+(92, 3, 9, 2024, 2, 'Active', '2024-03-01'),
+(93, 4, 6, 2024, 2, 'Active', '2024-03-01'),
+(94, 4, 7, 2024, 2, 'Active', '2024-03-01'),
+(95, 4, 8, 2024, 2, 'Active', '2024-03-01'),
+(96, 4, 9, 2024, 2, 'Active', '2024-03-01'),
+(97, 5, 6, 2024, 2, 'Active', '2024-03-01'),
+(98, 5, 7, 2024, 2, 'Active', '2024-03-01'),
+(99, 5, 8, 2024, 2, 'Active', '2024-03-01'),
 (100, 5, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 6 (Courses 6-9)
 (101, 6, 6, 2024, 2, 'Active', '2024-03-01'),
 (102, 6, 7, 2024, 2, 'Active', '2024-03-01'),
 (103, 6, 8, 2024, 2, 'Active', '2024-03-01'),
 (104, 6, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 7 (Courses 6-9)
 (105, 7, 6, 2024, 2, 'Active', '2024-03-01'),
 (106, 7, 7, 2024, 2, 'Active', '2024-03-01'),
 (107, 7, 8, 2024, 2, 'Active', '2024-03-01'),
 (108, 7, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 8 (Courses 6-9)
 (109, 8, 6, 2024, 2, 'Active', '2024-03-01'),
 (110, 8, 7, 2024, 2, 'Active', '2024-03-01'),
 (111, 8, 8, 2024, 2, 'Active', '2024-03-01'),
 (112, 8, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 9 (Courses 6-9)
 (113, 9, 6, 2024, 2, 'Active', '2024-03-01'),
 (114, 9, 7, 2024, 2, 'Active', '2024-03-01'),
 (115, 9, 8, 2024, 2, 'Active', '2024-03-01'),
 (116, 9, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 10 (Courses 6-9)
 (117, 10, 6, 2024, 2, 'Active', '2024-03-01'),
 (118, 10, 7, 2024, 2, 'Active', '2024-03-01'),
 (119, 10, 8, 2024, 2, 'Active', '2024-03-01'),
 (120, 10, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 11 Repeat (Courses 6-9)
 (121, 11, 6, 2024, 2, 'Active', '2024-03-01'),
 (122, 11, 7, 2024, 2, 'Active', '2024-03-01'),
 (123, 11, 8, 2024, 2, 'Active', '2024-03-01'),
 (124, 11, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 12 Repeat (Courses 6-9)
 (125, 12, 6, 2024, 2, 'Active', '2024-03-01'),
 (126, 12, 7, 2024, 2, 'Active', '2024-03-01'),
 (127, 12, 8, 2024, 2, 'Active', '2024-03-01'),
 (128, 12, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 13 Repeat (Courses 6-9)
 (129, 13, 6, 2024, 2, 'Active', '2024-03-01'),
 (130, 13, 7, 2024, 2, 'Active', '2024-03-01'),
 (131, 13, 8, 2024, 2, 'Active', '2024-03-01'),
 (132, 13, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 14 Repeat (Courses 6-9)
 (133, 14, 6, 2024, 2, 'Active', '2024-03-01'),
 (134, 14, 7, 2024, 2, 'Active', '2024-03-01'),
 (135, 14, 8, 2024, 2, 'Active', '2024-03-01'),
 (136, 14, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 15 Repeat (Courses 6-9)
 (137, 15, 6, 2024, 2, 'Active', '2024-03-01'),
 (138, 15, 7, 2024, 2, 'Active', '2024-03-01'),
 (139, 15, 8, 2024, 2, 'Active', '2024-03-01'),
 (140, 15, 9, 2024, 2, 'Active', '2024-03-01'),
--- Student 16 Suspended (Courses 6-9)
 (141, 16, 6, 2024, 2, 'Active', '2024-03-01'),
 (142, 16, 7, 2024, 2, 'Active', '2024-03-01'),
 (143, 16, 8, 2024, 2, 'Active', '2024-03-01'),
 (144, 16, 9, 2024, 2, 'Active', '2024-03-01');
 
---9. marks
+-- 11. Marks
 INSERT INTO Marks 
 (Marks_id, Exam_Date, Marks, Medi_Status, Student_ID, Course_ID, Asses_ID)
 VALUES
---(student 1-10 proper students)
---(student 1,3 high marks)
--- student 1
--- Course 1 (Practical)
 (1,  '2024-04-10', 78, 'Normal', 1, 1, 1),
 (2,  '2024-04-15', 80, 'Normal', 1, 1, 2),
 (3,  '2024-05-20', 75, 'Normal', 1, 1, 4),
 (4,  '2024-07-10', 85, 'Normal', 1, 1, 6),
--- Course 2 (Theory)
 (5,  '2024-04-10', 72, 'Normal', 1, 2, 1),
 (6,  '2024-04-15', 68, 'Normal', 1, 2, 2),
 (7,  '2024-05-20', 74, 'Normal', 1, 2, 3),
 (8,  '2024-07-10', 80, 'Normal', 1, 2, 5),
--- Course 3 (practical)
 (9,  '2024-04-10', 76, 'Normal', 1, 3, 1),
 (10, '2024-04-15', 70, 'Normal', 1, 3, 2),
 (12, '2024-05-25', 78, 'Normal', 1, 3, 3),
@@ -455,7 +456,6 @@ VALUES
 (148, '2024-04-15', 62, 'Normal', 7, 4, 2),
 (149, '2024-05-20', 65, 'Normal', 7, 4, 3),
 (150, '2024-07-10', 68, 'Normal', 7, 4, 5),
--- Course 5 (Practical)
 (151, '2024-04-10', 70, 'Normal', 7, 5, 1),
 (152, '2024-04-15', 68, 'Normal', 7, 5, 2),
 (153, '2024-05-20', 65, 'Normal', 7, 5, 3),
@@ -467,12 +467,10 @@ VALUES
 (156, '2024-04-15', 72, 'Normal', 8, 1, 2),
 (157, '2024-05-20', 70, 'Normal', 8, 1, 4),
 (158, '2024-07-10', 78, 'Normal', 8, 1, 6),
--- Course 2 (Theory)
 (159, '2024-04-10', 68, 'Normal', 8, 2, 1),
 (160, '2024-04-15', 70, 'Normal', 8, 2, 2),
 (161, '2024-05-20', 65, 'Normal', 8, 2, 3),
 (162, '2024-07-10', 72, 'Normal', 8, 2, 5),
--- Course 3 (practical)
 (163, '2024-04-10', 70, 'Normal', 8, 3, 1),
 (164, '2024-04-15', 72, 'Normal', 8, 3, 2),
 (166, '2024-05-25', 70, 'Normal', 8, 3, 3),
@@ -482,7 +480,6 @@ VALUES
 (170, '2024-04-15', 68, 'Normal', 8, 4, 2),
 (171, '2024-05-20', 62, 'Normal', 8, 4, 3),
 (172, '2024-07-10', 70, 'Normal', 8, 4, 5),
--- Course 5 (Practical)
 (173, '2024-04-10', 72, 'Normal', 8, 5, 1),
 (174, '2024-04-15', 70, 'Normal', 8, 5, 2),
 (175, '2024-05-20', 68, 'Normal', 8, 5, 3),
@@ -675,7 +672,7 @@ VALUES
 (350, '2024-04-15', 82, 'Normal', 16, 5, 2),
 (351, '2024-05-20', 78, 'Normal', 16, 5, 3),
 (352, '2024-07-10', 85, 'Normal', 16, 5, 5),
---insert marks for course 6,7,8,9  for all 16 students
+-- insert marks for course 6,7,8,9  for all 16 students
 (353,'2024-04-10',77,'Normal',1,6,1),
 (354,'2024-04-15',79,'Normal',1,6,2),
 (355,'2024-05-20',74,'Normal',1,6,4),
@@ -933,7 +930,7 @@ VALUES
 (607,'2024-05-20',72,'Normal',16,9,3),
 (608,'2024-07-10',80,'Normal',16,9,5);
 
---10. student phone
+-- 12. student phone
 INSERT INTO Student_Phone (Student_ID, Phone) VALUES 
 (1, '0771234567'), (1, '0719876543'), -- Student 1 has two numbers
 (2, '0772345678'),
@@ -953,7 +950,7 @@ INSERT INTO Student_Phone (Student_ID, Phone) VALUES
 (16, '0710001111');
 
 
---11. attendance
+-- 13. Attendance (Consolidated and Fixed)
 INSERT INTO Attendance 
 (Atten_ID, session, Status, Date, Result, Student_ID, Course_ID, To_id)
 VALUES
@@ -2035,38 +2032,29 @@ VALUES
 
 
 
-
---12. final result
+-- 14. Final Result
 INSERT INTO Final_Result (Result_ID, CA_Marks, End_Marks, Total_Marks, Grade_ID, Sgpa, Cgpa, Eligibility_Status, Student_ID, course_ID) VALUES 
 
---0nly for course 1
+-- 0nly for course 1
 -- High Achievers
 (1, 38.50, 52.00, 90.50, 1, 4.00, 3.85, 'Eligible', 1, 1),
 (2, 35.00, 50.00, 85.00, 1, 4.00, 3.70, 'Eligible', 2, 1),
 (3, 32.00, 48.00, 80.00, 2, 3.70, 3.65, 'Eligible', 3, 1),
 (4, 30.00, 46.00, 76.00, 3, 3.30, 3.40, 'Eligible', 4, 1),
-
--- Attendance Failure (Student 5 - Ineligible)
 (5, 0.00, 0.00, 0.00, 11, 0.00, 2.10, 'Ineligible', 5, 1),
-
--- Average Students
 (6, 28.00, 42.00, 70.00, 4, 3.00, 3.15, 'Eligible', 6, 1),
-(7, 25.00, 35.00, 60.00, 6, 2.30, 2.80, 'Eligible', 7, 1), -- Medical Case (Eligible)
+(7, 25.00, 35.00, 60.00, 6, 2.30, 2.80, 'Eligible', 7, 1),
 (8, 31.00, 44.00, 75.00, 3, 3.30, 3.55, 'Eligible', 8, 1),
 (9, 27.50, 38.00, 65.50, 5, 2.70, 2.90, 'Eligible', 9, 1),
 (10, 22.00, 33.00, 55.00, 7, 2.00, 2.40, 'Eligible', 10, 1),
 (11, 29.00, 41.00, 70.00, 4, 3.00, 3.20, 'Eligible', 11, 1),
 (12, 24.00, 36.00, 60.00, 6, 2.30, 2.75, 'Eligible', 12, 1),
-
--- Attendance Failure (Student 13 - Ineligible)
 (13, 0.00, 0.00, 0.00, 11, 0.00, 1.85, 'Ineligible', 13, 1),
-
--- Remaining Students
 (14, 26.00, 34.00, 60.00, 6, 2.30, 2.60, 'Eligible', 14, 1),
 (15, 33.00, 47.00, 80.00, 2, 3.70, 3.80, 'Eligible', 15, 1),
 (16, 20.00, 30.00, 50.00, 8, 1.70, 2.15, 'Suspended', 16, 1),
 
---course 2 - 9 for all 16 students
+-- course 2 - 9 for all 16 students
 (17,38.5,38.5,77,2,4.0,3.85,'Eligible',1,2),
 (18,40.0,40.0,80,2,4.0,3.85,'Eligible',1,3),
 (19,36.5,36.5,73,3,3.7,3.85,'Eligible',1,4),
