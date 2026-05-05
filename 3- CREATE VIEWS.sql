@@ -15,8 +15,8 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 ORDER BY cu.Course_code;
 
---  Student Individual Summary
 
+--  Student Individual Summary
 CREATE OR REPLACE VIEW VIEWAttendance_Individual_Summary AS
 SELECT 
     s.Reg_No,
@@ -40,58 +40,8 @@ JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
 
--- Theory Attendance
-
-CREATE OR REPLACE VIEW VIEWAttendance_Theory AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.session AS Session_Type,
-    ROUND(
-        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
-        COUNT(a.Atten_ID)) * 100, 2
-    ) AS Theory_Attendance_Percentage,
-    CASE 
-        WHEN ROUND(
-            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
-            COUNT(a.Atten_ID)) * 100, 2
-        ) >= 80 THEN 'Eligible'
-        ELSE 'Not Eligible'
-    END AS Theory_Eligibility
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-WHERE a.session = 'Theory'
-GROUP BY s.Reg_No, s.Full_name, cu.Course_code, a.session;
-
---  Practical Attendance
-
-CREATE OR REPLACE VIEW VIEWAttendance_Practical AS
-SELECT 
-    s.Reg_No,
-    s.Full_name,
-    cu.Course_code,
-    a.session AS Session_Type,
-    ROUND(
-        (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
-        COUNT(a.Atten_ID)) * 100, 2
-    ) AS Practical_Attendance_Percentage,
-    CASE 
-        WHEN ROUND(
-            (SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) / 
-            COUNT(a.Atten_ID)) * 100, 2
-        ) >= 80 THEN 'Eligible'
-        ELSE 'Not Eligible'
-    END AS Practical_Eligibility
-FROM Student s
-JOIN Attendance a ON s.Student_ID = a.Student_ID
-JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
-WHERE a.session = 'Practical'
-GROUP BY s.Reg_No, s.Full_name, cu.Course_code, a.session;
 
 -- Theory and Practical Attendance Combined
-
 CREATE OR REPLACE VIEW VIEWAttendance_Combined AS
 SELECT 
     s.Reg_No,
@@ -120,6 +70,8 @@ FROM Student s
 JOIN Attendance a ON s.Student_ID = a.Student_ID
 JOIN Course_Unit cu ON a.Course_ID = cu.Course_ID
 GROUP BY s.Reg_No, s.Full_name, cu.Course_code;
+
+
 
 -- Attendance & CA Eligibility
 
