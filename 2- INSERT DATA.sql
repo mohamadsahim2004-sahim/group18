@@ -112,16 +112,16 @@ INSERT INTO Tech_Officer (To_ID, Email, Full_Name, Assign_Lab, Dept_ID, User_ID)
 
 
 -- 9. Course Unit
-INSERT INTO Course_Unit (Course_ID, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID) VALUES
-(1, 'ICT1222', 2, 'Practical', 2, 1, 1, 1),
-(2, 'ICT1212', 2, 'Theory', 2, 1, 1, 2),
-(3, 'ICT1232', 2, 'Theory', 2, 1, 1, 5),
-(4, 'ICT1242', 2, 'Practical', 2, 1, 3, 5),
-(5, 'ICT1252', 2, 'Theory', 2, 1, 1, 2),
-(6, 'ICT1261', 2, 'Practical', 2, 1, 1, 1),
-(7, 'TMS1233', 2, 'Theory', 2, 1, 3, 4),
-(8, 'ENG1212', 2, 'Theory', 2, 1, 1, 6),
-(9, 'TCS1212', 2, 'Theory', 2, 1, 2, 6);
+INSERT INTO Course_Unit (Course_ID, Course_name, Course_code, Credit, Type, Semester, Level, Dept_ID, Lecturer_ID) VALUES
+(1,"Database Management Systems Practicum" ,'ICT1222', 2, 'Practical', 2, 1, 1, 1),
+(2,"Database Management Systems" ,'ICT1212', 2, 'Theory', 2, 1, 1, 2),
+(3,"Web Development" ,'ICT1232', 2, 'Theory', 2, 1, 1, 5),
+(4,"Web Development Practicum" ,'ICT1242', 2, 'Practical', 2, 1, 3, 5),
+(5,"Operating Systems Concepts and Application" ,'ICT1252', 2, 'Theory', 2, 1, 1, 2),
+(6,"System Programming Fundamentals and Linux" ,'ICT1261', 2, 'Practical', 2, 1, 1, 1),
+(7," Discrete Mathematics" ,'TMS1233', 2, 'Theory', 2, 1, 3, 4),
+(8,"ICT English II" ,'ENG1212', 2, 'Theory', 2, 1, 1, 6),
+(9," Fundamentals of Management" ,'TCS1212', 2, 'Theory', 2, 1, 2, 6);
 
 
 -- 10. entrollment
