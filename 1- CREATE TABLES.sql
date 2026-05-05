@@ -21,7 +21,7 @@ CREATE TABLE Assesment_Type (
 
 --  3. Grade
 CREATE TABLE Grade (
-    Grade_ID INT PRIMARY KEY,
+    Grade_ID varchar(2) PRIMARY KEY,
     Grade VARCHAR(2),
     Min_Marks INT,
     Max_Marks INT,
@@ -112,6 +112,7 @@ CREATE TABLE Tech_Officer (
 --  10. Course Unit
 CREATE TABLE Course_Unit (
     Course_ID INT PRIMARY KEY,
+    Course_name varchar(50),
     Course_code VARCHAR(10) UNIQUE,
     Credit INT,
     Type VARCHAR(20),
@@ -180,7 +181,7 @@ CREATE TABLE Final_Result (
     CA_Marks DECIMAL(5,2),
     End_Marks DECIMAL(5,2),
     Total_Marks DECIMAL(5,2),
-    Grade_ID INT,
+    Grade_ID varchar(2),
     Sgpa DECIMAL(3,2),
     Cgpa DECIMAL(3,2),
     Eligibility_Status VARCHAR(20),
