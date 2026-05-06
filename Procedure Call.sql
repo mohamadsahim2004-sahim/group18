@@ -1,73 +1,64 @@
-USE Group18_DB;
-
 
 -- 1. RECORD ATTENDANCE
 
-CALL sp_record_attendance(101, 1, '2026-05-01', 'present');
-CALL sp_record_attendance(101, 1, '2026-05-02', 'absent');
-CALL sp_record_attendance(102, 1, '2026-05-01', 'medical');
+CALL sp_RecordAttendance(
+    1,
+    'Theory',
+    'Present',
+    '2026-05-01',
+    101,
+    201,
+    301
+);
+
+-- 2. REGISTER MEDICAL (Attendance)
+
+CALL sp_RegisterMedical(
+    101,
+    201,
+    '2026-05-01',
+    'Attendance'
+);
+
+-- 2. REGISTER MEDICAL (Exam)
+
+CALL sp_RegisterMedical(
+    101,
+    201,
+    '2026-05-10',
+    'Exam'
+);
 
 
+-- 3. UPDATE MARKS
 
--- 2. INDIVIDUAL ATTENDANCE
-
-CALL sp_attendance_individual(101, 1);
-
-
--- 3. BATCH ATTENDANCE SUMMARY
-
-CALL sp_attendance_batch(1);
-
-
-
--- 4. RECORD MARKS
-
-CALL sp_record_marks(101, 1, 1, 75.50);
-CALL sp_record_marks(101, 1, 2, 60.00);
-CALL sp_record_marks(102, 1, 1, 80.00);
+CALL sp_UpdateMarks(
+    1,
+    '2026-05-10',
+    75.50,
+    101,
+    201,
+    1
+);
 
 
+-- 4. SET STUDENT STATUS
 
--- 5. CA INDIVIDUAL
-
-CALL sp_ca_individual(101, 1);
-
-
-
--- 6. CA BATCH SUMMARY
-
-CALL sp_ca_batch(1);
+CALL sp_SetStudentStatus(
+    101,
+    'Repeat'
+);
 
 
+-- 5. GENERATE BATCH REPORT
 
--- 7. CHECK ELIGIBILITY
+CALL sp_GenerateBatchReport(
+    201
+);
 
-CALL sp_check_eligibility(101, 1);
+-- VERIFY OUTPUT (OPTIONAL)
 
-
-
--- 8. ASSIGN FINAL GRADE
-
-CALL sp_assign_final_grade(101, 1, 78.50, 'no');
-CALL sp_assign_final_grade(102, 1, 85.00, 'yes'); -- medical case
-
-
--- 9. CALCULATE SGPA
-
-CALL sp_calculate_sgpa(101);
-
-
--- 10. CALCULATE CGPA
-
-CALL sp_calculate_cgpa(101);
-
-
--- 11. STUDENT FULL REPORT
-
-CALL sp_student_report(101);
-
-
-
--- 12. BATCH FINAL RESULTS
-
-CALL sp_batch_results(1);
+SELECT * FROM Attendance;
+SELECT * FROM Marks;
+SELECT * FROM Final_Result;
+SELECT * FROM Student;
