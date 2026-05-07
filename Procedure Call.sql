@@ -1,6 +1,5 @@
 
 -- 1. RECORD ATTENDANCE
-
 CALL sp_RecordAttendance(
     1,
     'Theory',
@@ -12,7 +11,6 @@ CALL sp_RecordAttendance(
 );
 
 -- 2. REGISTER MEDICAL (Attendance)
-
 CALL sp_RegisterMedical(
     101,
     201,
@@ -21,7 +19,6 @@ CALL sp_RegisterMedical(
 );
 
 -- 2. REGISTER MEDICAL (Exam)
-
 CALL sp_RegisterMedical(
     101,
     201,
@@ -31,7 +28,6 @@ CALL sp_RegisterMedical(
 
 
 -- 3. UPDATE MARKS
-
 CALL sp_UpdateMarks(
     1,
     '2026-05-10',
@@ -43,7 +39,6 @@ CALL sp_UpdateMarks(
 
 
 -- 4. SET STUDENT STATUS
-
 CALL sp_SetStudentStatus(
     101,
     'Repeat'
@@ -51,14 +46,13 @@ CALL sp_SetStudentStatus(
 
 
 -- 5. GENERATE BATCH REPORT
-
 CALL sp_GenerateBatchReport(
     201
 );
 
 -- VERIFY OUTPUT (OPTIONAL)
-
-SELECT * FROM Attendance;
-SELECT * FROM Marks;
-SELECT * FROM Final_Result;
-SELECT * FROM Student;
+SELECT * FROM sp_RecordAttendance;
+SELECT * FROM sp_RegisterMedical;
+SELECT * FROM sp_UpdateMarks;
+SELECT * FROM sp_SetStudentStatus;
+SELECT * FROM sp_GenerateBatchReport;
