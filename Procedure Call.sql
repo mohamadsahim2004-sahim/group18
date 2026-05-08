@@ -1,58 +1,49 @@
+-- 1. attendance_per_course
+CALL attendance_per_course('ICT1232');
 
--- 1. RECORD ATTENDANCE
-CALL sp_RecordAttendance(
-    1,
-    'Theory',
-    'Present',
-    '2026-05-01',
-    101,
-    201,
-    301
+
+-- 2. student_attendance
+CALL student_attendance('tg20242076');
+
+
+-- 3. per_person_with_course
+CALL per_person_with_course('tg20242076', 'ICT1232');
+
+
+-- 4. CA_whole_batch
+CALL CA_whole_batch('ICT1232');
+
+
+-- 5. CA_indi_with_course
+CALL CA_indi_with_course('tg20242076', 'ICT1232');
+
+
+-- 6. FinalMarks_individual
+CALL FinalMarks_individual('tg20242076');
+
+
+-- 7. CalculateGrade
+CALL CalculateGrade(
+    75,     -- Assignment
+    68,     -- Mid Exam
+    80,     -- Practical
+    72,     -- Final Exam
+    FALSE,  -- Medical CA
+    FALSE,  -- Medical Mid
+    FALSE,  -- Medical Final
+    @final_marks,
+    @grade,
+    @gpa
 );
 
--- 2. REGISTER MEDICAL (Attendance)
-CALL sp_RegisterMedical(
-    101,
-    201,
-    '2026-05-01',
-    'Attendance'
-);
-
--- 2. REGISTER MEDICAL (Exam)
-CALL sp_RegisterMedical(
-    101,
-    201,
-    '2026-05-10',
-    'Exam'
-);
+SELECT @final_marks AS Final_Marks,
+       @grade AS Grade,
+       @gpa AS GPA;
 
 
--- 3. UPDATE MARKS
-CALL sp_UpdateMarks(
-    1,
-    '2026-05-10',
-    75.50,
-    101,
-    201,
-    1
-);
+-- 8. ProcessStudentResult
+CALL ProcessStudentResult('tg20242076', 'ICT1232');
 
 
--- 4. SET STUDENT STATUS
-CALL sp_SetStudentStatus(
-    101,
-    'Repeat'
-);
-
-
--- 5. GENERATE BATCH REPORT
-CALL sp_GenerateBatchReport(
-    201
-);
-
--- VERIFY OUTPUT (OPTIONAL)
-SELECT * FROM sp_RecordAttendance;
-SELECT * FROM sp_RegisterMedical;
-SELECT * FROM sp_UpdateMarks;
-SELECT * FROM sp_SetStudentStatus;
-SELECT * FROM sp_GenerateBatchReport;
+-- 9. CalculateSGPA_CGPA
+CALL CalculateSGPA_CGPA('tg20242076', 2);
